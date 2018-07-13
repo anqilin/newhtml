@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>纠错</title>
+
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="gride.css" />
+    <script type="text/javascript" src="./js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="./js/publicUtils.js"></script>
+    <script type="text/javascript" src="./js/utils.js"></script>
+    <script type="text/javascript" src="lib/jquery.raty.js"></script>
+    <meta name="format-detection" content="telephone=no, email=no">
+    <script type="text/javascript" src="http://tajs.qq.com/stats?sId=37342703" charset="UTF-8"></script>
+    <link rel="stylesheet" href="css/frozenui.css"/>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/weui/1.1.2/style/weui.min.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/jquery-weui/1.2.0/css/jquery-weui.min.css">
+    <link rel="stylesheet" href="lib/jquery.raty.css">
+
+
+    <style type="text/css">
+
+        html, body {
+            height: 100%;
+            background-color: #FFFFFF;
+
+        }
+    </style>
+</head>
+<body style="width: 100%;height: 100%" bgcolor="#ffffff">
+
+
+<div style="width:100%; background-color: #FFFFFF" id="no_enough">
+    <div>
+        <p style=" margin-left:25px; padding-top:10px; font-size:12px;color: #2dac76">不足之处请指出</p>
+        <div style="padding-left:20px;padding-right: 20px;padding-top: 5px;padding-bottom: 0px" class="weui-flex">
+            <div style="padding:5px" class="weui-flex__item">
+                <button style="width:100%;color: #2dac76" class="ui-btn"><font style="font-size: 13px" >服务态度差</font>
+                </button>
+            </div>
+            <div style="padding:5px" class="weui-flex__item">
+                <button style="width:100%;color: #2dac76" class="ui-btn"><font style="font-size: 13px" >业务不熟练</font>
+                </button>
+            </div>
+
+        </div>
+        <div style="padding-left:20px;padding-right: 20px;padding-top: 0px;padding-bottom: 0px" class="weui-flex">
+            <div style="padding:5px" class="weui-flex__item">
+                <button style="width:100%;color: #2dac76" class="ui-btn"><font style="font-size: 13px" >停车困难</font>
+                </button>
+            </div>
+            <div style="padding:5px" class="weui-flex__item">
+                <button style="width:100%;color: #2dac76; font-size:12px" class="ui-btn"><font style="font-size: 13px" >等待队伍长</font>
+                </button>
+            </div>
+
+        </div>
+        <div style="padding-left:20px;padding-right: 20px;padding-top: 0px;padding-bottom: 5px" class="weui-flex">
+            <div style="padding:5px" class="weui-flex__item">
+                <button style="width:100%;color: #2dac76" class="ui-btn"><font style="font-size: 13px" >地方难找</font>
+                </button>
+            </div>
+            <div style="padding:5px" class="weui-flex__item">
+                <button style="width:100%;color: #2dac76; font-size:12px" class="ui-btn"><font style="font-size: 13px" >环境差</font>
+                </button>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<div style="width:100%; background-color: #FFFFFF" id="div1">
+    <div style="padding-left: 25px; padding-right: 25px">
+        <p style=" padding-top:10px; font-size:12px;color: #2dac76">备注说明</p>
+        <center>
+            <textarea id="note" style="margin-top: 20px;font-size: 12px; height: 100px;width: 100%"></textarea>
+        </center>
+
+    </div>
+</div>
+<div style="margin-left: 25px;font-size:12px;color: #2dac76;margin-top: 10px">联系人</div>
+
+<!--<div style="margin-top: 10px;border-color: #FFFFFF" class="weui-tab__bd">-->
+    <!--<div style="border-color: #FFFFFF;border: #FFFFFF" id="tab1" class="weui-tab__bd-item weui-tab__bd-item--active">-->
+        <div  id="cell1" style="margin-top:10px;border-color: #e6e6e6" class="weui-cells">
+            <div style="padding-top: 13px; padding-bottom: 13px" class="weui-cell">
+
+                <div class="weui-cell__bd">
+                    <p style="font-size:14px; padding-left:10px;color: #a4a4a4">手机号</p>
+                </div>
+                <div class="weui-cell__ft" >
+                   <!-- <p style="font-size: small">13917679112</p>-->
+                    <input style="width: 70%;text-align: right; border: 0px;font-size: 14px" type="tel" name="userphone" id="userphone" placeholder="请输入手机号">
+                </div>
+            </div>
+            <div style="padding-top: 7px;padding-bottom: 7px" class="weui-cell">
+
+                <div class="weui-cell__bd">
+                    <p style="font-size:14px; padding-left:10px;color: #a4a4a4">接受我们的回访</p>
+                </div>
+                <div style="display: flex" class="weui-cell__ft">
+                    <input  class="weui-switch" type="checkbox" id="button1" name="button1" />
+
+                </div>
+
+            </div>
+
+        </div>
+    <!--</div>-->
+<!--</div>-->
+<div style="width:100%;padding-top: 40px; background-color: #FFFFFF; height:30%">
+    <div style="padding-left: 25px; padding-right: 25px">
+        <center>
+            <button onclick="sub_data()" style="width: 100%;height: 40px;background-color: #42b886" class="ui-btn ui-btn-primary">提交</button>
+        </center>
+    </div>
+
+</div>
+
+
+
+<script>
+    //$.fn.raty.defaults.path = 'lib/images';
+   // $.fn.bootstrapSwitch.defaults.size = 'large';
+   // $.fn.bootstrapSwitch.defaults.onColor = 'success';
+
+   /* $(function(){
+        $('#mySwitch input').bootstrapSwitch({
+            onText:'On',
+            offText:'Off'
+        });
+    })*/
+		var myjson;
+		
+        var jsonstring=sessionStorage.getItem("jsonstring")
+		//alert(jsonstring);
+		myjson=JSON.parse(jsonstring);
+		var code=myjson.code;
+		var visit=0;
+		var phone="";
+        $("#button1").bind("click", function () {
+
+            if(visit==0){
+                visit=1;
+            }else if(visit==1){
+                visit=0;
+            }
+
+        });
+
+
+
+		var button_cells=$("#no_enough").find(".ui-btn");
+		var button_staues=new Array(0,0,0,0,0,0);
+		var select_items=new Array("服务态度差","业务不熟练","停车困难","等待队伍长","地方难找","环境差");
+		var myscore;
+		var base_url="https://online.sptcc.com:8445/handapp_app/NoticePushServlet?type=2";
+		for (var i=0;i<button_cells.length;i++){
+		    var item=button_cells[i];
+            item.index=i;
+		    item.onclick=function () {
+				if(button_staues[this.index]==0){
+					this.style.backgroundColor="#42b886";
+					this.style.color="#ffffff";
+					button_staues[this.index]=1;
+					
+				}else if(button_staues[this.index]==1){
+					this.style.backgroundColor="#ffffff";
+					this.style.color="#01b468"
+                    button_staues[this.index]=0;
+				}
+				//this.style.backgroundColor="#42b886";
+				//alert(nearby)
+				//alert(areaname.length)
+            }
+
+        }
+	    function sub_data() {
+            //alert($("#button1").val());
+            phone=$("#userphone").val();
+		    var tijiao=""
+		    for (var i=0;i<select_items.length;i++){
+		        if(button_staues[i]==1){
+		            tijiao=tijiao+","+select_items[i];
+                }
+
+            }
+			tijiao=tijiao.substring(1);
+			var note="";
+            note=$("#note").val();
+			if(tijiao.length==0){
+				tijiao="";
+			}
+			if(note.length==0){
+				note="";
+			}
+			if(phone.length==0){
+			    phone="";
+            }
+			var myurl=base_url+"&errorType="+tijiao+"&note="+note+"&phone="+phone+"&code="+code+"&visit="+visit;
+            $.ajax({
+
+                url: myurl,
+
+                type: "get",
+                dataType: "json",
+                //jsonp   : "callback",
+                timeout: 5 * 1000,
+                error: function (xhr, ajaxOptions, thrownError) {
+                    alert(xhr.statusText);
+                    alert(xhr.responseText);
+                    alert(xhr.status);
+                    alert(thrownError);
+
+                },
+                success: function (data) {
+					
+                    var json = eval(data); //数组
+                    //alert(json.return_code);
+					if(json.return_code=="success"){
+						$.alert("纠错提交成功", function() {
+							goto_back();
+						});
+					}
+
+
+
+                }
+            });
+		    
+            
+        }
+		function goto_back() {
+			window.history.go(-1);
+		}
+</script>
+<script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery-weui/1.2.0/js/jquery-weui.min.js"></script>
+<script src="//cdn.bootcss.com/jquery-weui/0.8.3/js/swiper.min.js"></script>
+<script src="//cdn.bootcss.com/jquery-weui/0.8.3/js/city-picker.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,366 @@
+.htkHeader{
+	background:url(../theme_ht/ht_header1.png);
+	background-size:100% 100%;
+	height: 44px;
+}
+.htkHeader a{
+	position: absolute;
+	height: 20px;
+	background-size: 100% 100%;
+}
+.htkHeader a.text{
+	width: 133px;
+	left: 32%;
+	top: 25%;
+}
+.htkHeader a.home{
+/**
+	background-image: url(../theme/header2.png);
+	width: 23px;
+	left: auto;
+	right: 11%;
+	top: 25%;**/
+	background-image: url(../theme/header2.png);
+	width: 12%;
+	height: 100%;
+	left: auto;
+	right: 9%;
+	top: 0;
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+	background-size: 23px 20px;
+}
+.htkHeader a.back{
+/**
+	background-image: url(../theme/header4.png);
+	width: 20px;
+	left: auto;
+	right: 2%;
+	top: 25%;**/
+	background-image: url(../theme/header4.png);
+	width: 9%;
+	height: 100%;
+	left: auto;
+	right: 0;
+	top: 0;
+	background-repeat: no-repeat;
+	background-size: 20px 20px;
+	background-position: 50% 50%;
+}
+.htkHeader img{
+	position: absolute;
+	top: 25%;
+	height: 20px;
+}
+.htkHeader img.text{
+	left :29%;
+}
+.htkHeader img.home{
+	right:11%;
+}
+.htkHeader img.back{
+	right: 2%;
+}
+.htfooterDiv{
+	border:none;
+	height:57px;
+}
+.htfooterDiv img{
+	position: absolute; 
+	width: 20%; 
+	height: 57px;
+}
+.htpage5div1{
+	position:relative;
+}
+.htpage5div1 img{
+	width: 96%; 
+	margin-left: 2%;
+	
+}
+.htpage5div1 span{
+	position: absolute;
+	width: 48%;
+	height: 85%;
+  top: 0px;
+  left: 50%;
+}
+.htpage5div{
+	position:relative;
+	height:125px;
+}
+.htpage5div img{
+	position: absolute; 
+	width: 274px;
+	height: 110px;
+	left: 50%;
+	margin-left: -137px;
+}
+.htbodyUiDiv{
+	position: relative;
+	background-image: url(../theme_ht/ht_page6_ui.png);
+  	background-repeat: no-repeat;
+  	background-size: 110% 100%;
+  	height: 50px;
+}
+.htbodyUiDiv img{
+	position: absolute;
+}
+.htbodyUiDiv img.tu{
+  height: 77%;
+  top: 22%;
+  left: 4%;
+}
+.htbodyUiDiv img.text{
+  height: 33%;
+  left: 21%;
+  top: 38%;
+}
+.htbodyUiDiv img.hr{
+	width:104%;
+	margin-left: 4%;
+	height: 55px;
+}
+.htbodyliDiv{
+	position: relative;
+	background-image: url(../theme_ht/ht_page6_li.png);
+  background-repeat: no-repeat;
+  background-size: 110% 100%;
+  height: 39px;
+}
+.htbodyliDiv:hover {
+	background-color: rgba(0,0,0,.1);
+}
+.htbodyliDiv img{
+	position: absolute;
+}
+.htbodyliDiv img.text{
+  height: 43%;
+  left: 27%;
+  top: 32%;
+}
+.htbodyliDiv img.li2{
+  height: 23%;
+  top: 41%;
+  right: 8%;
+}
+.httexttittle {
+	position: relative;	
+	color: #23238E;
+  font-weight: bold;	
+	text-align:center;
+	font-size:18px;
+	padding: 0 15px;
+	margin-top: 76px;
+}
+.htmsg{
+	position: relative;	
+}
+.htmsg img.hr{
+	width:100%;
+	padding-top: 10px;
+}
+.httext{
+	margin-top: 10px;
+	padding: 0 15px;
+}
+.httext span{
+	font-size:15px;
+}
+.httext span.spst{
+	font-weight: bold;
+}
+.httext p{
+	margin: 0 auto;
+	font-size:14px;
+}
+.httext img{
+	width: 100%;
+  vertical-align: middle;
+}
+.httext img.htxuhr{
+	width:104%;
+	margin-left:-2%;
+	padding: 15px 0;
+}
+.httextfoot{
+	margin-top: 10px;
+	padding: 0 15px;
+}
+.httextfoot p{
+	text-align: right;
+	margin: 0 auto;
+	font-size:14px;
+}
+.htbodylogoDiv{
+	position:absolute;
+	background-image:url(../theme_ht/etclogo.png);
+	background-repeat: no-repeat;
+	background-position-y: 100%;
+	background-size: 100%;
+	background-color: #f4f4f4;
+	height: 100%;
+	top: -30px;
+}
+.htPage7UiDiv{
+	position: relative;
+	background-image: url(../theme_ht/ht_page9_ui.png);
+  background-repeat: no-repeat;
+  background-size: 110% 100%;
+  height: 59px;
+}
+.htPage7UiDiv:hover {
+	background-color: rgba(0,0,0,.1);
+}
+.htPage7UiDiv img{
+	position: absolute;
+}
+.htPage7UiDiv img.tu{
+  height: 43%;
+  top: 33%;
+  left: 10%;
+}
+.htPage7liDiv{
+  position: relative;
+	background-image: url(../theme_ht/ht_page6_li.png);
+  background-repeat: no-repeat;
+  background-size: 110% 100%;
+  height: 40px;
+}
+.htPage7liDiv:hover {
+	background-color: rgba(0,0,0,.1);
+}
+.htPage7liDiv span.litext{
+	font-weight: bold;
+	font-size:15px;
+	margin-left: 35px;
+	margin-right: 40px;
+	line-height:40px;
+	display:block;
+	white-space:nowrap; 
+	overflow:hidden; 
+	text-overflow:ellipsis;
+}
+.htPage7liDiv img{
+	position: absolute;
+}
+.htPage7liDiv img.li2{
+  height: 23%;
+  top: 41%;
+  right: 8%;
+}
+.htPage7liDiv_1{
+  position: relative;
+	background-image: url(../theme_ht/ht_page6_li.png);
+  background-repeat: no-repeat;
+  background-size: 110% 100%;
+  height: 60px;
+}
+.htPage7liDiv_1:hover {
+	background-color: rgba(0,0,0,.1);
+}
+.htPage7liDiv_1 span.lititle{
+	font-weight: bold;
+	font-size:15px;
+	margin-left: 35px;
+	margin-right: 40px;
+	line-height:30px;
+	display:block;
+	white-space:nowrap; 
+	overflow:hidden; 
+	text-overflow:ellipsis;
+	line-height: 60px;
+}
+
+.htPage7liDiv_1 span.litext{
+	font-size: 13px;
+	margin-left: 35px;
+	margin-right: 40px;
+	margin-top: -5px;
+/**	display: block; **/
+	display: none;
+}
+
+.htPage7liDiv_1 img{
+	position: absolute;
+}
+.htPage7liDiv_1 img.li2{
+  height: 23%;
+  top: 41%;
+  right: 8%;
+}
+.htpage8div1 img{
+	padding: 0 27px;
+	height: 15px;
+	margin-top: 15px;
+}
+.htpage8div2 	{
+	position: relative;
+	margin: 26px;
+	margin-bottom: 14px;
+	background-image: url(../theme_ht/ht_page8_2.png);
+	background-size: 100% 100%;
+	height: 29px;
+}
+.htpage8div2 span{
+	position: absolute;
+	margin-left: 17px;
+	line-height: 30px;
+	color: darkgrey;
+}
+.htpage8div2 input{
+	position: absolute;
+	border: none;
+	background-color: rgba(0,0,0,0);
+	height: 26px;
+	width: 97%;
+	font-size: large;
+	padding-left: 3%;
+}
+.htpage8div3 img{
+	padding: 0 27px;
+	height: 30px;
+	margin-top: 15px;
+}
+.htpage8div4 {
+	position: relative;
+}
+.htpage8div4 img{
+	padding: 0 90px;
+	height: 14px;
+	margin-bottom: 80px;
+	margin-top: 66px;
+}
+.htPage9UiDiv{
+	position: relative;
+	background-image: url(../theme_ht/ht_page9_ui.png);
+  background-repeat: no-repeat;
+  background-size: 110% 100%;
+  height: 59px;
+}
+.htPage9UiDiv img{
+	position: absolute;
+}
+.htPage9UiDiv img.tu{
+  height: 58%;
+  top: 24%;
+  left: 15%;
+}
+.htPage9UiDiv img.text{
+  height: 28%;
+  left: 32%;
+  top: 38%;
+}
+.htPage9UiDiv img.li2{
+  height: 23%;
+  top: 41%;
+  right: 8%;
+}
+.htcontenth4 h4{
+	text-align:center;
+	margin-top: 9px;
+	margin-bottom: -2px;
+}
+.htPage9UiDiv:hover {
+	background-color: rgba(0,0,0,.1);
+}

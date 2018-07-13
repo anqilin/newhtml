@@ -1,0 +1,62 @@
+.content-div img{
+	vertical-align:middle;
+	width:100%;
+}
+
+.content-h1{
+ 	color: #FF6900;
+  font-weight: bold;	
+	text-align:center;
+	line-height:25px;
+	font-size:20px;
+	padding-top:15px;
+	white-space:normal;
+}
+
+.content-h3{
+	text-align:center;
+	white-space:normal;
+}
+
+.content-div p{
+	line-height:20px;
+	font-size:15px;
+	white-space:normal;
+}
+
+.cardservicea{
+	padding: 5px 15px;
+	margin-top: 15px;
+	font-size:15px;
+  background-color: rgba(250,250,250,0.5);
+	white-space:normal;
+}
+
+.cardserviceb{
+	padding: 5px 15px;
+	margin-top: 15px;
+	font-size:15px;
+	background-color: rgba(180,180,180,.5);
+	white-space:normal;
+}
+
+.cardservicea span{
+	display: block;	
+}
+
+.cardserviceb span{
+	display: block;	
+}
+
+.splittitle{
+	padding-left:10px;
+	line-height:35px;	
+	width:100%;
+	font-weight: bold;
+	color: #FF6900;
+}
+
+.newsTagA p{
+	white-space:normal;
+	font-size:15px;
+}

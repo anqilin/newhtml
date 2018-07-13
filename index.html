@@ -1,0 +1,1669 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>上海公交卡</title>
+		<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="gride.css" />
+		<script type="text/javascript" src="./js/jquery-1.8.3.min.js"></script>
+
+		<meta name="format-detection" content="telephone=no, email=no">
+    <script type="text/javascript" src="https://tajs.qq.com/stats?sId=37342703" charset="UTF-8"></script>
+	<link rel="stylesheet" href="css/frozenui.css"/>
+	<link rel="stylesheet" href="https://cdn.bootcss.com/weui/1.1.2/style/weui.min.css">
+	<link rel="stylesheet" href="https://cdn.bootcss.com/jquery-weui/1.2.0/css/jquery-weui.min.css">
+
+
+
+	<style type="text/css">
+		#wrap{
+			display: flex;
+		}
+
+
+	</style>
+
+</head>
+
+<body id="body" >
+
+    <div class="weui-search-bar" id="searchBar">
+      <form class="weui-search-bar__form" action="#">
+        <div class="weui-search-bar__box">
+          <i class="weui-icon-search"></i>
+          <input  type="search" oninput="onInput(event)" onpropertychange="onPropertyChange(event)" class="weui-search-bar__input" id="searchInput" placeholder="输入网点名称、地点或服务项目" required="">
+          <a onclick="stop_search()" href="javascript:" class="weui-icon-clear" id="searchClear"></a>
+        </div>
+        <label class="weui-search-bar__label" id="searchText" style="transform-origin: 0px 0px 0px; opacity: 1; transform: scale(1, 1);">
+          <i class="weui-icon-search"></i>
+          <span>输入网点名称、地点或服务项目</span>
+        </label>
+      </form>
+      <a onclick="stop_search()" href="javascript:" class="weui-search-bar__cancel-btn" id="searchCancel">取消</a>
+    </div>
+
+
+
+    <div id="show_block" style="padding-bottom:20px" class="demo-item">
+      <div class="demo-block">
+        <div class="ui-grid-icon ">
+          <ul style="margin-top:10px">
+            <li onclick="search_point(0)">
+              <div class="ui-img-icon">
+                <span style="background-image:url(pic/c1.png)" ></span>
+              </div>
+              <h5>充资</h5>
+
+
+            </li>
+            <li onclick="search_point(1)">
+              <div class="ui-img-icon">
+                <span style="background-image:url(pic/c2.png)"></span>
+              </div>
+              <h5>购卡</h5>
+
+            </li>
+            <li onclick="search_point(2)">
+              <div class="ui-img-icon">
+                <span style="background-image:url(pic/c3.png)"></span>
+              </div>
+              <h5>退卡</h5>
+
+
+            </li>
+            <li onclick="search_point(3)">
+              <div class="ui-img-icon">
+                <span style="background-image:url(pic/c4.png)"></span>
+              </div>
+              <h5>维修</h5>
+
+
+            </li>
+            <li onclick="search_point(4)">
+              <div class="ui-img-icon">
+                <span style="background-image:url(pic/c5.png)"></span>
+              </div>
+              <h5>移资</h5>
+
+            </li>
+          </ul>
+		  
+		  <ul style="margin-top:10px">
+            <li onclick="search_point(5)">
+              <div class="ui-img-icon">
+                <span style="background-image:url(pic/c6.png)"></span>
+              </div>
+              <h5>ETC安装</h5>
+
+
+            </li>
+            <li onclick="search_point(6)">
+              <div class="ui-img-icon">
+                <span style="background-image:url(pic/c7.png)"></span>
+              </div>
+              <h5>自助机</h5>
+
+            </li>
+            <li onclick="search_point(7)">
+              <div class="ui-img-icon">
+                <span style="background-image:url(pic/c8.png)"></span>
+              </div>
+              <h5>交通</h5>
+
+
+            </li>
+            <li onclick="search_point(8)">
+              <div class="ui-img-icon">
+                <span style="background-image:url(pic/c9.png)"></span>
+              </div>
+              <h5>美食</h5>
+
+
+            </li>
+            <li>
+              <div id="more" onclick="get_more()" class="ui-img-icon">
+                <span id="more_icon" style=" background-image:url(pic/c14.png)"></span>
+              </div>
+              <h5>更多</h5>
+
+            </li>
+          </ul>
+		  
+		<ul id="third_row" style="margin-top:10px">
+            <li onclick="search_point(10)">
+              <div class="ui-img-icon">
+                <span style="background-image:url(pic/c10.png)"></span>
+              </div>
+              <h5>酒店</h5>
+
+
+            </li>
+            <li onclick="search_point(11)" >
+              <div class="ui-img-icon">
+                <span style="background-image:url(pic/c11.png)"></span>
+              </div>
+              <h5>购物</h5>
+
+            </li>
+            <li onclick="search_point(12)">
+              <div class="ui-img-icon">
+                <span style="background-image:url(pic/c12.png)"></span>
+              </div>
+              <h5>娱乐</h5>
+
+
+            </li>
+            <li onclick="search_point(13)">
+              <div class="ui-img-icon">
+                <span style="background-image:url(pic/c13.png)"></span>
+              </div>
+              <h5>旅游</h5>
+
+
+            </li>
+            <li>
+              <div class="ui-img-icon">
+                
+              </div>
+
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+	
+	<div  id="mywei_tab" style="margin-top:0px;" class="weui-tab">
+	  <div id="web_navbar" class="weui-navbar">
+		<a onclick="demo1()" class="weui-navbar__item weui-bar__item--on" href="#tab1">
+		  位置
+		</a>
+		<a onclick="demo2()" class="weui-navbar__item" href="#tab1" >
+		  服务类型
+		</a>
+		<a onclick="demo3()" class="weui-navbar__item" href="#tab1" >
+		  卡片种类
+		</a>
+	  </div>
+	  
+	  <div class="weui-tab__bd">
+		<div style="display: none"  id="tab1" class="weui-tab__bd-item weui-tab__bd-item--active">
+		<div id="cell1" style="margin-top:0px" class="weui-cells">
+		  <div onclick="goto_detail()" class="weui-cell">
+			
+			<div  class="weui-cell__bd">
+			  <p>道路停车-定西路</p>
+			  <p style="font-size:12px; padding-left:2px"><font color="#CCCCCC">定西路（愚园路-安化路）</font></p>
+			</div>
+			<div class="weui-cell__ft">
+				<img height="23px" width="25px" src="pic/e1.png">
+				<img height="23px" width="25px" src="pic/e2.png">
+				<img height="23px" width="25px" src="pic/e3.png">
+				
+				<p>139米</p>
+			</div>
+		  </div>
+		  <div class="weui-cell">
+			
+			<div  onclick="get_adress(this)" class="weui-cell__bd">
+			  <p>春秋国旅-定西路营业部</p>
+			  <p style="font-size:12px; padding-left:2px"><font color="#CCCCCC">定西路1558号</font></p>
+			</div>
+			<div class="weui-cell__ft">
+				<img height="25px" width="25px" src="pic/e2.png">
+				<p>141米</p>
+			</div>
+		  </div>
+		  
+		  <div class="weui-cell">			
+			<div class="weui-cell__bd">
+			  <p>捷强连锁-愚园店</p>
+			  <p style="font-size:12px; padding-left:2px"><font color="#CCCCCC">愚园路1385号</font></p>
+			</div>
+			<div class="weui-cell__ft">
+				<img height="25px" width="25px" src="pic/e2.png">
+				<p>141米</p>
+			</div>
+		  </div>
+		  
+		  <div class="weui-cell">			
+			<div class="weui-cell__bd">
+			  <p>快客便利贤福店</p>
+			  <p style="font-size:12px; padding-left:2px"><font color="#CCCCCC">宣化路266号</font></p>
+			</div>
+			<div class="weui-cell__ft">
+				<img height="25px" width="25px" src="pic/e2.png">
+				<p>183米</p>
+			</div>
+		  </div>
+		  
+		</div>
+		</div>
+
+	  </div>
+	</div>
+	<div id="wei_tab1" style="display:block" class="weui-tab__bd">
+		<div id="tab2" class="weui-tab__bd-item weui-tab__bd-item--active">
+		<div id="cell2" style="margin-top:0px" class="weui-cells ">
+
+
+		  
+		  <!--<div class="weui-cell">
+			<div class="weui-cell__bd">
+			  <p>捷强连锁-愚园店</p>
+			  <p style="font-size:12px; padding-left:2px"><font color="#CCCCCC">愚园路1385号</font></p>
+			</div>
+			<div class="weui-cell__ft">
+				<img height="25px" width="25px" src="pic/e2.png">
+				<p>141米</p>
+			</div>
+		  </div>
+		  
+		  <div class="weui-cell">			
+			<div class="weui-cell__bd">
+			  <p>快客便利贤福店</p>
+			  <p style="font-size:12px; padding-left:2px"><font color="#CCCCCC">宣化路266号</font></p>
+			</div>
+			<div class="weui-cell__ft">
+				<img height="25px" width="25px" src="pic/e2.png">
+				<p>183米</p>
+			</div>
+		  </div>-->
+		  
+		</div>
+		</div>
+
+	  </div>
+	
+	
+
+	<div id="about" style=" height:inherit; margin-bottom:70px" class="weui-popup__container popup-top">
+	  <div class="weui-popup__overlay"></div>
+	  <div class="weui-popup__modal">
+		<div id="wrap">
+			<div style="width:20%" id="div1">
+				<center><div id="location_set1" onclick="location_set1()" style="width:auto; padding:10px; background-color: #FFFFFF">我附近</div></center>
+				<center><div id="location_set2" onclick="location_set2()" style="width:auto; padding:10px">按区县</div></center>
+
+			</div>
+			<div style="width:80%" id="div2">
+				<div id="location_cells1" class="weui-cells">
+				  <div class="weui-cell">
+					<div class="weui-cell__bd">
+					  <p>500米</p>
+					</div>
+				  </div>
+				  
+				  <div class="weui-cell">
+					<div class="weui-cell__bd">
+					  <p>1000米</p>
+					</div>
+				  </div>
+				  <div class="weui-cell">
+					<div class="weui-cell__bd">
+					  <p>2000米</p>
+					</div>
+				  </div>
+				  <div class="weui-cell">
+					<div class="weui-cell__bd">
+					  <p>5000米</p>
+					</div>
+				  </div>
+				  
+				</div>
+				
+				<div id="location_cells2" style="display: none" class="weui-cells">
+				  <div class="weui-cell">
+					<div class="weui-cell__bd">
+					  <p>全部地区</p>
+					</div>
+				  </div>
+				  
+				  <div class="weui-cell">
+					<div class="weui-cell__bd">
+					  <p>黄浦区</p>
+					</div>
+				  </div>
+				  <div class="weui-cell">
+					<div class="weui-cell__bd">
+					  <p>徐汇区</p>
+					</div>
+				  </div>
+				  <div class="weui-cell">
+					<div class="weui-cell__bd">
+					  <p>长宁区</p>
+					</div>
+				  </div>
+				  
+				  <div class="weui-cell">
+					<div class="weui-cell__bd">
+					  <p>静安区</p>
+					</div>
+				  </div>
+				  <div class="weui-cell">
+					<div class="weui-cell__bd">
+					  <p>普陀区</p>
+					</div>
+				  </div>
+				  <div class="weui-cell">
+					<div class="weui-cell__bd">
+					  <p>虹口区</p>
+					</div>
+				  </div>
+				  <div class="weui-cell">
+					<div class="weui-cell__bd">
+					  <p>杨浦区</p>
+					</div>
+				  </div>
+				  <div class="weui-cell">
+					<div class="weui-cell__bd">
+					  <p>闵行区</p>
+					</div>
+				  </div>
+				  <div class="weui-cell">
+					<div class="weui-cell__bd">
+					  <p>宝山区</p>
+					</div>
+				  </div>
+				  
+				  <div class="weui-cell">
+					<div class="weui-cell__bd">
+					  <p>嘉定区</p>
+					</div>
+				  </div>
+				  <div class="weui-cell">
+					<div class="weui-cell__bd">
+					  <p>金山区</p>
+					</div>
+				  </div>
+				  <div class="weui-cell">
+					<div class="weui-cell__bd">
+					  <p>松江区</p>
+					</div>
+				  </div>
+				  <div class="weui-cell">
+					<div class="weui-cell__bd">
+					  <p>青浦区</p>
+					</div>
+				  </div>
+				  <div class="weui-cell">
+					<div class="weui-cell__bd">
+					  <p>奉贤区</p>
+					</div>
+				  </div>
+				  <div class="weui-cell">
+					<div class="weui-cell__bd">
+					  <p>崇明区</p>
+					</div>
+				  </div>
+				  <div class="weui-cell">
+					<div class="weui-cell__bd">
+					  <p>浦东新区</p>
+					</div>
+				  </div>
+				  
+				  
+				  
+				</div>
+				
+			</div>
+
+		</div>
+	  </div>
+	</div>
+	
+	<div id="about2" style=" height:inherit; margin-bottom:70px" class="weui-popup__container popup-top">
+	  <div class="weui-popup__overlay"></div>
+	  <div class="weui-popup__modal">
+		<div>
+
+			<div style="width:100%" id="div3">
+				<div>
+					<p style=" margin-left:15px; margin-top:10px; font-size:14px">服务网点</p>
+					<div style="padding-left:10px;padding-right: 10px;padding-top: 5px;padding-bottom: 5px" class="weui-flex">
+					  <div style="padding:5px" class="weui-flex__item">
+					  	<button style="width:100%"  class="ui-btn">充资</button>
+					  </div>
+					  <div style="padding:5px" class="weui-flex__item" >
+					  	<button style="width:100%" class="ui-btn">购卡</button>
+					  </div>
+					  <div style="padding:5px" class="weui-flex__item">
+					  	<button style="width:100%" class="ui-btn">退卡</button>
+					  </div>
+					  <div  style="padding:5px" class="weui-flex__item" >
+					  	<button style="width:100%" class="ui-btn">维修</button>
+					  </div>
+					</div>
+					<div style="padding-left:10px;padding-right: 10px;padding-top: 5px;padding-bottom: 5px" class="weui-flex">
+					  <div style="padding:5px" class="weui-flex__item">
+					  	<button style="width:100%" class="ui-btn">移资</button>
+					  </div>
+					  <div style="padding:5px" class="weui-flex__item" >
+					  	<button style="width:100%; font-size:11px" class="ui-btn">ETC安装</button>
+					  </div>
+					  <div style="padding:5px" class="weui-flex__item">
+					  	<button style="width:100%" class="ui-btn">自助机</button>
+					  </div>
+					  <div  style="padding:5px" class="weui-flex__item" >
+					  	
+					  </div>
+					</div>
+					
+				</div>
+				
+				
+				<div>
+					<p style=" margin-left:15px; margin-top:0px; font-size:14px">特约商户</p>
+					<div style="padding-left:10px;padding-right: 10px;padding-top: 5px;padding-bottom: 5px" class="weui-flex">
+					  <div style="padding:5px" class="weui-flex__item">
+					  	<button style="width:100%"  class="ui-btn">酒店</button>
+					  </div>
+					  <div style="padding:5px" class="weui-flex__item" >
+					  	<button style="width:100%" class="ui-btn">美食</button>
+					  </div>
+					  <div style="padding:5px" class="weui-flex__item">
+					  	<button style="width:100%" class="ui-btn">购物</button>
+					  </div>
+					  <div  style="padding:5px" class="weui-flex__item" >
+					  	<button style="width:100%" class="ui-btn">旅游</button>
+					  </div>
+					</div>
+					<div style="padding-left:10px;padding-right: 10px;padding-top: 5px;padding-bottom: 5px" class="weui-flex">
+					  <div style="padding:5px" class="weui-flex__item">
+					  	<button style="width:100%" class="ui-btn">娱乐</button>
+					  </div>
+					  <div style="padding:5px" class="weui-flex__item" >
+					  	<button style="width:100%; font-size:12px" class="ui-btn">交通</button>
+					  </div>
+					  <div style="padding:5px" class="weui-flex__item">
+					  </div>
+					  <div  style="padding:5px" class="weui-flex__item" >
+					  	
+					  </div>
+					</div>					
+				</div>
+				
+
+			
+
+			</div>
+
+		</div>
+				<div  style="padding:10px; margin-top:10px" class="weui-flex">
+				  <div style="padding:5px" class="weui-flex__item">
+					<button onclick="service_type_reset()" style="width:100%"   class="ui-btn">重置</button>
+				  </div>
+				  <div style="padding:5px; " class="weui-flex__item" >
+					<button onclick="service_type_sure()" style="width:100%;background-color: #42b886" class="ui-btn ui-btn-primary">确定</button>
+				  </div>
+
+				</div>
+		
+	  </div>
+	</div>
+	
+	<div id="about3" style=" height:inherit; margin-bottom:100px" class="weui-popup__container popup-top">
+	  <div class="weui-popup__overlay"></div>
+	  <div class="weui-popup__modal">
+		<div>
+
+			<div style="width:100%" id="div4">
+				<div>
+					<p style=" margin-left:15px; margin-top:10px; font-size:14px">选择卡片种类</p>
+
+					<div style="padding:10px" class="weui-flex">
+					  <div style="padding:5px" class="weui-flex__item">
+					  	<button id="jtk" onclick="set_jtk()" style="width:100%" class="ui-btn">交通卡</button>
+					  </div>
+					  <div style="padding:5px" class="weui-flex__item" >
+					  	<button id="htk" onclick="set_htk()" style="width:100%" class="ui-btn">沪通卡</button>
+					  </div>
+					  <div style="padding:5px" class="weui-flex__item">
+					  	<button id="lyk" onclick="set_lyk()" style="width:100%" class="ui-btn">旅游卡</button>
+					  </div>
+					  <div  style="padding:5px" class="weui-flex__item" >
+					  	
+					  </div>
+					</div>
+					
+				</div>
+				
+
+
+			</div>
+
+		</div>
+				<div  style="padding:10px; margin-top:50px" class="weui-flex">
+				  <div style="padding:5px" class="weui-flex__item">
+					<button onclick="cardtype_reset()" style="width:100%"   class="ui-btn">重置</button>
+				  </div>
+				  <div style="padding:5px; " class="weui-flex__item" >
+					<button id="card_type_sure" onclick="card_type_sure()" style="width:100%;background-color: #42b886" class="ui-btn ui-btn-primary">确定</button>
+				  </div>
+
+				</div>
+		
+	  </div>
+	</div>
+    <div id="load_more" class="weui-loadmore">
+        <i class="weui-loading"></i>
+        <span  class="weui-loadmore__tips">正在加载</span>
+    </div>
+	
+	
+	
+	<script>
+		var flag = 0;
+		var flag2 = 0;
+		var flag3 =0;
+		var more_flag =0;
+		var jsonstring="";
+        jsonstring=sessionStorage.getItem("myjson");
+
+
+		var myjson;
+	    document.getElementById("third_row").style.display="none";
+	    var base_url="https://online.sptcc.com:8445/handapp_app/MerchantSearchServlet?isFW=3";
+	    var base_url2="https://online.sptcc.com:8445/handapp_app/MerchantSearchServlet?isFW=3";
+	    var card_type="&"+"cardType=";
+		var card_jtk_staues=0;
+		var card_htk_staues=0;
+		var card_lyk_staues=0;
+
+		var service_staues=new Array(0,0,0,0,0,0,0,0,0,0,0,0,0)
+		var point_type=new Array("0","1","2","3","4","8","11")
+		var sh_type=new Array("0","1","2","3","4","5");
+		var location_distance_items=new Array("500","1000","2000","5000");
+		var location_area_items=new Array("all","黄浦区","徐汇区","长宁区","静安区","普陀区","虹口区",
+            "杨浦区","闵行区","宝山区","嘉定区","金山区","松江区","青浦区","奉贤区","崇明区","浦东新区");
+		var nearby="";
+		var areaname="";
+		var keyword="";
+		var myindex=0;
+        //$(document.body).infinite();
+		var service_items=$("#about2").find(".ui-btn")
+		//alert(service_items.length)
+		for (var i = 0; i < service_staues.length; i++) {
+            var a = service_items[i];
+            a.index = i;//给每个className为child的元素添加index属性;
+            a.onclick = function () {
+
+                if(service_staues[this.index]==0){
+					this.style.backgroundColor="#42b886";
+					this.style.color="#ffffff"
+					service_staues[this.index]=1;
+				}else if(service_staues[this.index]==1){
+					this.style.backgroundColor="#ffffff";
+					this.style.color="#000000"
+					service_staues[this.index]=0;
+				}
+				
+            }
+        }
+        var location_cells1=$("#location_cells1").find(".weui-cell");
+		var location_cells2=$("#location_cells2").find(".weui-cell");
+		for (var i=0;i<location_cells1.length;i++){
+		    var item=location_cells1[i]
+            item.index=i;
+		    item.onclick=function () {
+				nearby=location_distance_items[this.index];
+				this.style.color="#2dac76";
+				for(var i=0;i<location_cells2.length;i++){
+				    location_cells2[i].style.color="#3d4145"
+				}
+                for(var i=0;i<location_cells1.length;i++){
+                    if(i!=this.index) {
+                        location_cells1[i].style.color = "#3d4145"
+                    }
+                }
+				areaname="";
+				demo1();
+				search_point2();
+				//alert(nearby)
+				//alert(areaname.length)
+            }
+
+        }
+		for (var i=0;i<location_cells2.length;i++){
+		    var item=location_cells2[i]
+            item.index=i;
+		    item.onclick=function () {
+		        nearby="";
+				areaname=location_area_items[this.index];
+                this.style.color="#2dac76";
+                for(var i=0;i<location_cells1.length;i++){
+                    location_cells1[i].style.color="#3d4145"
+                }
+                for(var i=0;i<location_cells2.length;i++){
+                    if(i!=this.index) {
+                        location_cells2[i].style.color = "#3d4145"
+                    }
+                }
+
+
+				demo1();
+				search_point2();
+            }
+
+        }
+		//alert(service_staues.length)
+		function get_more(){
+			if(more_flag==0){
+				document.getElementById("third_row").style.display="-webkit-box"; 
+				document.getElementById("more_icon").style.backgroundImage="url(pic/c15.png)";
+				more_flag =1;
+			}else if(more_flag==1){
+				document.getElementById("third_row").style.display="none"; 
+				document.getElementById("more_icon").style.backgroundImage="url(pic/c14.png)";
+				more_flag =0;
+			}
+			 
+		}
+		function demo1(){
+			if(flag==0){
+				document.getElementById("show_block").style.display="none";
+				var obj= document.getElementById('about');
+				var top =document.getElementById('web_navbar');
+				var show_block=document.getElementById('show_block');
+				//alert(tob.style.top);
+				oTop = top.offsetTop;
+				while(top.offsetParent!=null)
+					{  
+						oParent = top.offsetParent 
+						oTop += oParent.offsetTop  // Add parent top position
+						top = oParent
+					}
+				oTop=oTop - show_block.offsetHeight;
+				oTop=oTop -5;
+				oTop=oTop +50;
+
+				obj.style.top= oTop+"px";
+				$.closePopup();
+		　 		$("#about").popup();
+                $(window).scrollTop(0);
+                flag=1;
+				flag2=0;
+				flag3 =0;
+				
+			}else if(flag==1){
+				$.closePopup();
+                $(window).scrollTop(0);
+
+				flag=0;
+				document.getElementById("show_block").style.display="block";
+                //document.body.scrollTop=0+"px";
+               // $('.scroll_top').click(function(){$('html,body').animate({scrollTop: '0px'}, 100);});
+                $(window).scrollTop(0);
+			}
+			
+		}
+		function demo2(){
+			if(flag2==0){
+				document.getElementById("show_block").style.display="none";
+				var obj= document.getElementById('about2');
+				var top =document.getElementById('web_navbar');
+				var show_block=document.getElementById('show_block');
+				//alert(tob.style.top);
+				oTop = top.offsetTop;
+				while(top.offsetParent!=null)
+					{  
+						oParent = top.offsetParent 
+						oTop += oParent.offsetTop  // Add parent top position
+						top = oParent
+					}
+				oTop=oTop - show_block.offsetHeight;
+				oTop=oTop -5;
+				oTop = oTop +50;
+                obj.style.top= oTop+"px";
+				$.closePopup();
+		　 		$("#about2").popup();
+				//obj.offsetTop=top
+
+				flag2=1;
+				flag=0;
+				flag3 = 0;
+				 
+			}else if(flag2==1){
+				$.closePopup();
+				flag2=0;
+				document.getElementById("show_block").style.display="block";
+                document.body.scrollTop=0+"px";
+			}			
+				
+		   
+		　
+		}
+		
+		function demo3(){
+			if(flag3==0){
+				document.getElementById("show_block").style.display="none"; 
+				var obj= document.getElementById('about3');
+				var top =document.getElementById('web_navbar');
+				var show_block=document.getElementById('show_block');
+				//alert(tob.style.top);
+				var oTop = top.offsetTop;
+				while(top.offsetParent!=null)
+					{  
+						var oParent = top.offsetParent;
+						oTop += oParent.offsetTop;  // Add parent top position
+						top = oParent
+					}
+				oTop=oTop - show_block.offsetHeight;
+				oTop=oTop -5;
+				oTop=oTop+50
+				obj.style.top= oTop+"px";
+				$.closePopup();
+		　 		$("#about3").popup();
+				//obj.offsetTop=top
+                document.body.scrollTop=0+"px";
+				flag3=1;
+				flag =0;
+				flag2 =0;
+				
+			}else if(flag3==1){
+				$.closePopup();
+				flag3=0;
+				document.getElementById("show_block").style.display="block";
+                document.body.scrollTop=0+"px";
+			}			
+	　
+		}
+		
+		$('input').bind('input propertychange', function() {
+
+			 if($(this).val().length==0){
+			 	document.getElementById("show_block").style.display="block";
+				document.getElementById("mywei_tab").style.display="block";
+				//document.getElementById("wei_tab1").style.display="none";
+			 
+			 }else{
+			 	document.getElementById("show_block").style.display="none";
+				document.getElementById("mywei_tab").style.display="none";
+				//document.getElementById("wei_tab1").style.display="block";
+			 }
+		});
+		function stop_search(){
+				document.getElementById("show_block").style.display="block";
+				document.getElementById("mywei_tab").style.display="block";
+				keyword="";
+				search_point2();
+		}
+		function goto_detail(code) {
+		    sessionStorage.setItem("myjson",JSON.stringify(myjson));
+           	window.location.href='point_detail.html?no='+code;
+
+        }
+        function get_adress(obj) {
+
+           var str= obj.getElementsByTagName("p")[1].innerText;
+           alert(str);
+
+        }
+
+        $(function () {
+            if(sessionStorage.getItem("time")==null){
+                get_location_data();
+                return;
+			}
+            if(jsonstring!=null){
+                reload_json();
+                return;
+			}
+
+            var mylongitude;
+            var mylatitude;
+            var start;
+            var end;
+
+                        //alert( position.coords.longitude)
+            mylongitude = sessionStorage.getItem("lng");
+            mylatitude = sessionStorage.getItem("lat")
+            var mytimestamp = (new Date()).valueOf();
+            var time=mytimestamp-sessionStorage.getItem("time");
+            if(time/1000>600){
+                get_location()
+            }
+            start = new LngLat(mylongitude, mylatitude);
+			var myurl=base_url+"&nearby=500" + "&longitude=" + mylongitude + "&latitude=" + mylatitude;
+			append_url=myurl;
+            $.ajax({
+
+                            url: myurl,
+
+                            type: "get",
+                            dataType: "json",
+                            //jsonp   : "callback",
+                            timeout: 5 * 1000,
+                            error: function (xhr, ajaxOptions, thrownError) {
+                                alert(xhr.statusText);
+                                alert(xhr.responseText);
+                                alert(xhr.status);
+                                alert(thrownError);
+
+                            },
+                            success: function (data) {
+                                var json = eval(data); //数组
+                                if(json.length==10){
+                                    document.getElementById("load_more").style.display="block"
+                                    loading=false;
+                                }else if(json.length<10) {
+                                    document.getElementById("load_more").style.display="none"
+                                    loading=true;
+                                }
+                                currentNum=0;
+                                myjson = json;
+                                var tt = "";
+                                $("#cell2").find(".weui-cell").remove();
+                                $.each(json, function (index) {
+                                    var html = "";
+                                    //循环获取数据
+                                    //alert(JSON.stringify(json[index]))
+                                    var item = json[index];
+                                    var stype = item.stype;
+                                    var site = item.site;
+                                    var addr = item.addr;
+                                    var lng = item.lng;
+                                    var lat = item.lat;
+                                    var jtk = item.jiaotongka;
+                                    var htk = item.hutongka;
+                                    var lyk = item.lvyouka;
+                                    end = new LngLat(lng, lat);
+                                    var distance = calculateLineDistance(start, end);
+                                    //distance=distance.substring(0,distance.indexOf("."))
+                                    distance = Math.floor(distance);
+                                    html += '<div  class="weui-cell">';
+                                    html += '<div  class="weui-cell__bd">';
+                                    html += '<p>' + stype + '-' + site + '</p>';
+                                    html += '<p style="font-size:12px; padding-left:2px"><font color="#a4a4a4">' + addr + '</font></p>';
+                                    html += '</div>'
+                                    html += '<div class="weui-cell__ft">';
+                                    if (jtk.length > 0) {
+                                        html += '<img height="23px" width="25px" src="pic/e1.png">';
+                                    }
+                                    if (lyk.length > 0) {
+                                        html += '<img style="margin-left: 3px" height="23px" width="25px" src="pic/e2.png">';
+                                    }
+                                    if (htk.length > 0) {
+                                        html += '<img style="margin-left: 3px" height="23px" width="25px" src="pic/e3.png">';
+                                    }
+
+
+                                    html += '<p style="color: #a4a4a4">' + distance + '米</p>';
+                                    html += '</div>';
+                                    html += '</div>';
+                                    $("#cell2").append(html);
+
+                                });
+                                var items = $("#cell2").find(".weui-cell")
+                                for (var i = 0; i < items.length; i++) {
+                                    var a = items[i];
+                                    a.index = i;//给每个className为child的元素添加index属性;
+                                    a.onclick = function () {
+
+                                        sessionStorage.setItem("jsonstring",JSON.stringify(myjson[this.index]));
+                                        sessionStorage.setItem("appendurl",append_url);
+                                        goto_detail(myjson[this.index].code)
+                                    }
+                                }
+
+                            }
+                        });
+
+
+
+
+        })
+        function LngLat(longitude, latitude) {
+            this.longitude = longitude;
+            this.latitude = latitude;
+        }
+
+        function calculateLineDistance(start, end) {
+            var d1 = 0.01745329251994329;
+            var d2 = start.longitude;
+            var d3 = start.latitude;
+            var d4 = end.longitude;
+            var d5 = end.latitude;
+            d2 *= d1;
+            d3 *= d1;
+            d4 *= d1;
+            d5 *= d1;
+            var d6 = Math.sin(d2);
+            var d7 = Math.sin(d3);
+            var d8 = Math.cos(d2);
+            var d9 = Math.cos(d3);
+            var d10 = Math.sin(d4);
+            var d11 = Math.sin(d5);
+            var d12 = Math.cos(d4);
+            var d13 = Math.cos(d5);
+            var arrayOfDouble1 = [];
+            var arrayOfDouble2 = [];
+            arrayOfDouble1.push(d9 * d8);
+            arrayOfDouble1.push(d9 * d6);
+            arrayOfDouble1.push(d7);
+            arrayOfDouble2.push(d13 * d12);
+            arrayOfDouble2.push(d13 * d10);
+            arrayOfDouble2.push(d11);
+            var d14 = Math.sqrt((arrayOfDouble1[0] - arrayOfDouble2[0]) * (arrayOfDouble1[0] - arrayOfDouble2[0]) +
+                (arrayOfDouble1[1] - arrayOfDouble2[1]) * (arrayOfDouble1[1] - arrayOfDouble2[1]) +
+                (arrayOfDouble1[2] - arrayOfDouble2[2]) * (arrayOfDouble1[2] - arrayOfDouble2[2]));
+
+            return(Math.asin(d14 / 2.0) * 12742001.579854401);
+        }
+
+        function search_point(type) {
+            var mylongitude;
+            var mylatitude;
+            var start;
+            var end;
+
+            var myurl;
+            if (type == 0) {
+                myurl = base_url + "&serviceType=0"
+                //alert(myurl)
+            } else if (type == 1) {
+                myurl = base_url + "&serviceType=1"
+            } else if (type == 2) {
+                myurl = base_url + "&serviceType=2"
+            } else if (type == 3) {
+                myurl = base_url + "&serviceType=3"
+            } else if (type == 4) {
+                myurl = base_url + "&serviceType=4"
+            } else if (type == 5) {
+                myurl = base_url + "&serviceType=8"
+            } else if (type == 6) {
+                myurl = base_url + "&serviceType=11"
+            } else if (type == 7) {
+                myurl = base_url + "&shMenu1=5"
+            } else if (type == 8) {
+                myurl = base_url + "&shMenu1=1"
+            } else if (type == 10) {
+                myurl = base_url + "&shMenu1=0"
+            } else if (type == 11) {
+                myurl = base_url + "&shMenu1=2"
+            } else if (type == 12) {
+                myurl = base_url + "&shMenu1=4"
+            } else if (type == 13) {
+                myurl = base_url + "&shMenu1=3"
+            }
+            var mytimestamp = (new Date()).valueOf();
+            var time=mytimestamp-sessionStorage.getItem("time");
+            if(time/1000>600){
+                get_location()
+            }
+            mylongitude = sessionStorage.getItem("lng");
+            mylatitude = sessionStorage.getItem("lat")
+
+                        start = new LngLat(mylongitude, mylatitude);
+                        myurl = myurl + "&nearby=500"+"&longitude=" + mylongitude + "&latitude=" + mylatitude;
+                        append_url=myurl;
+
+                        $.ajax({
+
+                            url: myurl,
+
+                            type: "get",
+                            dataType: "json",
+                            //jsonp   : "callback",
+                            timeout: 5 * 1000,
+                            error: function (xhr, ajaxOptions, thrownError) {
+                                alert(xhr.statusText);
+                                alert(xhr.responseText);
+                                alert(xhr.status);
+                                alert(thrownError);
+
+                            },
+                            success: function (data) {
+                                var json = eval(data); //数组
+                                if(json.length==10){
+                                    document.getElementById("load_more").style.display="block"
+                                    loading=false
+                                }else if(json.length<10) {
+                                    document.getElementById("load_more").style.display="none"
+                                    loading=true;
+                                }
+                                currentNum=0;
+                                myjson = json;
+                                var tt = "";
+                                $("#cell2").find(".weui-cell").remove();
+                                $.each(json, function (index) {
+                                    var html = "";
+                                    //循环获取数据
+                                    //alert(JSON.stringify(json[index]))
+                                    var item = json[index];
+                                    var stype = item.stype;
+                                    var site = item.site;
+                                    var addr = item.addr;
+                                    var lng = item.lng;
+                                    var lat = item.lat;
+                                    var jtk = item.jiaotongka;
+                                    var htk = item.hutongka;
+                                    var lyk = item.lvyouka;
+                                    end = new LngLat(lng, lat);
+                                    var distance = calculateLineDistance(start, end);
+                                    //distance=distance.substring(0,distance.indexOf("."))
+                                    distance = Math.floor(distance);
+                                    html += '<div  class="weui-cell">';
+                                    html += '<div  class="weui-cell__bd">';
+                                    html += '<p>' + stype + '-' + site + '</p>';
+                                    html += '<p style="font-size:12px; padding-left:2px"><font color="#a4a4a4">' + addr + '</font></p>';
+                                    html += '</div>'
+                                    html += '<div class="weui-cell__ft">';
+                                    if (jtk.length > 0) {
+                                        html += '<img height="23px" width="25px" src="pic/e1.png">';
+                                    }
+                                    if (lyk.length > 0) {
+                                        html += '<img style="margin-left: 3px" height="23px" width="25px" src="pic/e2.png">';
+                                    }
+                                    if (htk.length > 0) {
+                                        html += '<img style="margin-left: 3px" height="23px" width="25px" src="pic/e3.png">';
+                                    }
+
+
+                                    html += '<p style="color: #a4a4a4">' + distance + '米</p>';
+                                    html += '</div>';
+                                    html += '</div>';
+                                    $("#cell2").append(html);
+
+                                });
+                                var items = $("#cell2").find(".weui-cell")
+                                for (var i = 0; i < items.length; i++) {
+                                    var a = items[i];
+                                    a.index = i;//给每个className为child的元素添加index属性;
+                                    a.onclick = function () {
+
+                                        sessionStorage.setItem("jsonstring",JSON.stringify(myjson[this.index]));
+                                        sessionStorage.setItem("appendurl",append_url);
+                                        goto_detail(myjson[this.index].code)
+                                    }
+                                }
+
+                            }
+                        });
+
+
+        }
+
+        function search_point2() {
+            var myurl = base_url2;
+            var mylongitude;
+            var mylatitude;
+            var start;
+            var end;
+
+            var cardvalue = "";
+            var point_value = "";
+            var sh_value = "";
+            if (card_jtk_staues == 1) {
+                cardvalue = cardvalue + ",0"
+            }
+            if (card_lyk_staues == 1) {
+                cardvalue = cardvalue + ",1"
+            }
+            if (card_htk_staues == 1) {
+                cardvalue = cardvalue + ",2"
+            }
+
+            if (cardvalue.length > 0) {
+                //alert(cardvalue);
+                cardvalue = cardvalue.substring(1);
+                myurl = myurl + "&cardType=" + cardvalue;
+                //alert(myurl);
+            }
+            for (var i = 0; i < service_staues.length; i++) {
+                if (i < 7) {
+                    if (service_staues[i] == 1) {
+                        point_value = point_value + "," + point_type[i];
+
+                    }
+                } else if (i >= 7) {
+                    if (service_staues[i] == 1) {
+                        sh_value = sh_value + "," + sh_type[i - 7]
+                    }
+
+                }
+            }
+            if (point_value.length > 0) {
+                point_value = point_value.substring(1);
+                myurl = myurl + "&serviceType=" + point_value;
+            }
+            if (sh_value.length > 0) {
+                sh_value = sh_value.substring(1);
+                myurl = myurl + "&shMenu1=" + sh_value;
+            }
+            if (areaname.length > 0) {
+                myurl = myurl + "&areaName=" + areaname;
+            }
+            if (keyword.length > 0) {
+                myurl = myurl + "&keyword=" + keyword;
+            }
+
+
+            var mytimestamp = (new Date()).valueOf();
+            var time=mytimestamp-sessionStorage.getItem("time");
+            if(time/1000>600){
+                get_location()
+            }
+            mylongitude = sessionStorage.getItem("lng");
+            mylatitude = sessionStorage.getItem("lat");
+                        start = new LngLat(mylongitude, mylatitude);
+                        if (nearby.length > 0) {
+                            myurl = myurl + "&nearby=" + nearby + "&longitude=" + mylongitude + "&latitude=" + mylatitude;
+                        }
+                        append_url=myurl;
+
+                        $.ajax({
+
+                            url: myurl,
+
+                            type: "get",
+                            dataType: "json",
+                            //jsonp   : "callback",
+                            timeout: 5 * 1000,
+                            error: function (xhr, ajaxOptions, thrownError) {
+                                alert(xhr.statusText);
+                                alert(xhr.responseText);
+                                alert(xhr.status);
+                                alert(thrownError);
+
+                            },
+                            success: function (data) {
+                                var json = eval(data); //数组
+                                if(json.length==10){
+                                    document.getElementById("load_more").style.display="block"
+                                    loading=false
+                                }else if(json.length<10) {
+                                    document.getElementById("load_more").style.display="none"
+                                    loading=true;
+                                }
+                                currentNum=0;
+                                myjson = json;
+                                var tt = "";
+                                $("#cell2").find(".weui-cell").remove();
+                                $.each(json, function (index) {
+                                    var html = "";
+                                    //循环获取数据
+                                    //alert(JSON.stringify(json[index]))
+                                    var item = json[index];
+                                    var stype = item.stype;
+                                    var site = item.site;
+                                    var addr = item.addr;
+                                    var lng = item.lng;
+                                    var lat = item.lat;
+                                    var jtk = item.jiaotongka;
+                                    var htk = item.hutongka;
+                                    var lyk = item.lvyouka;
+                                    end = new LngLat(lng, lat);
+                                    var distance = calculateLineDistance(start, end);
+                                    //distance=distance.substring(0,distance.indexOf("."))
+                                    distance = Math.floor(distance);
+                                    html += '<div  class="weui-cell">';
+                                    html += '<div  class="weui-cell__bd">';
+                                    html += '<p>' + stype + '-' + site + '</p>';
+                                    html += '<p style="font-size:12px; padding-left:2px"><font color="#a4a4a4">' + addr + '</font></p>';
+                                    html += '</div>'
+                                    html += '<div class="weui-cell__ft">';
+                                    if (jtk.length > 0) {
+                                        html += '<img height="23px" width="25px" src="pic/e1.png">';
+                                    }
+                                    if (lyk.length > 0) {
+                                        html += '<img style="margin-left: 3px" height="23px" width="25px" src="pic/e2.png">';
+                                    }
+                                    if (htk.length > 0) {
+                                        html += '<img style="margin-left: 3px" height="23px" width="25px" src="pic/e3.png">';
+                                    }
+
+
+                                    html += '<p style="color: #a4a4a4">' + distance + '米</p>';
+                                    html += '</div>';
+                                    html += '</div>';
+                                    $("#cell2").append(html);
+
+                                });
+                                var items = $("#cell2").find(".weui-cell")
+                                for (var i = 0; i < items.length; i++) {
+                                    var a = items[i];
+                                    a.index = i;//给每个className为child的元素添加index属性;
+                                    a.onclick = function () {
+
+                                        sessionStorage.setItem("jsonstring",JSON.stringify(myjson[this.index]));
+                                        sessionStorage.setItem("appendurl",append_url);
+                                        goto_detail(myjson[this.index].code)
+                                    }
+                                }
+
+                            }
+                        });
+
+        }
+        function set_jtk() {
+		    if(card_jtk_staues==0){
+		        card_jtk_staues=1;
+		        document.getElementById("jtk").style.backgroundColor="#42b886";
+				document.getElementById("jtk").style.color="#ffffff"
+			}else if(card_jtk_staues==1){
+				card_jtk_staues=0;
+                document.getElementById("jtk").style.backgroundColor="#ffffff";
+		        document.getElementById("jtk").style.color="#000000"
+			}	
+        }
+		function set_htk() {
+		    if(card_htk_staues==0){
+		        card_htk_staues=1;
+		        document.getElementById("htk").style.backgroundColor="#42b886";
+				document.getElementById("htk").style.color="#ffffff"
+			}else if(card_htk_staues==1){
+				card_htk_staues=0;
+                document.getElementById("htk").style.backgroundColor="#ffffff";
+		        document.getElementById("htk").style.color="#000000"
+			}	
+        }
+		
+		function set_lyk() {
+		    if(card_lyk_staues==0){
+		        card_lyk_staues=1;
+		        document.getElementById("lyk").style.backgroundColor="#42b886";
+		        document.getElementById("lyk").style.color="#ffffff"
+			}else if(card_lyk_staues==1){
+				card_lyk_staues=0;
+                document.getElementById("lyk").style.backgroundColor="#ffffff";
+                document.getElementById("lyk").style.color="#000000"
+			}	
+        }
+        function card_type_sure() {
+		    demo3();
+			search_point2();
+        }
+        function cardtype_reset() {
+		    card_jtk_staues=0;
+            document.getElementById("jtk").style.backgroundColor="#ffffff";
+		    document.getElementById("jtk").style.color="#000000"
+			
+			card_htk_staues=0;
+            document.getElementById("htk").style.backgroundColor="#ffffff";
+		    document.getElementById("htk").style.color="#000000"
+			
+			card_lyk_staues=0;
+            document.getElementById("lyk").style.backgroundColor="#ffffff";
+            document.getElementById("lyk").style.color="#000000"
+	
+        }
+        function service_type_reset() {
+		    for (var i = 0; i < service_staues.length; i++) {
+				var a = service_items[i];
+				a.index = i;//给每个className为child的元素添加index属性;
+				a.style.backgroundColor="#ffffff";
+				a.style.color="#000000"
+				service_staues[this.index]=0;
+			}
+			
+        }
+        function service_type_sure() {
+		    demo2();
+		    search_point2();
+			
+        }
+        function location_set1() {
+		    document.getElementById("location_cells1").style.display="block";
+		    document.getElementById("location_set1").style.backgroundColor="#ffffff"
+            document.getElementById("location_set2").style.backgroundColor="#EFEFF4"
+
+		    document.getElementById("location_cells2").style.display="none";  
+        }
+		function location_set2() {
+		    document.getElementById("location_cells1").style.display="none";
+		    document.getElementById("location_cells2").style.display="block";
+			document.getElementById("location_set1").style.backgroundColor="#EFEFF4"
+            document.getElementById("location_set2").style.backgroundColor="#ffffff"	
+        }
+
+		var oForm =  document.getElementsByTagName("form")[0];
+		oForm.onsubmit = function(){
+			//$scope.searchOrder();
+			keyword=document.getElementById("searchInput").value;
+			search_point2();
+			
+		};
+
+        var loading=false
+        var totalHeight = 0; //定义一个总高度变量
+        var currentNum=0;
+        var append_url=sessionStorage.getItem("appendurl");
+        function ata(){
+
+            //alert($(window).scrollTop()+";"+$(document).height()+";"+$(window).height())
+            totalHeight =  parseFloat( $(window).height() ) +  parseFloat( $(window).scrollTop() )+70; //浏览器的高度加上滚动条的高度
+            if ( $(document).height() <= totalHeight ) {
+                //当文档的高度小于或者等于总的高度时，开始动态加载数据
+
+                if(loading)return;
+                loading=true;
+
+                    var myurl=append_url;
+                    currentNum=currentNum+10;
+                    myurl=myurl+"&currentNum="+currentNum;
+
+
+                var mytimestamp = (new Date()).valueOf();
+                var time=mytimestamp-sessionStorage.getItem("time");
+                if(time/1000>600){
+                    get_location()
+                }
+                var mylongitude = sessionStorage.getItem("lng");
+                var mylatitude = sessionStorage.getItem("lat");
+                            var start = new LngLat(mylongitude, mylatitude);
+
+                            $.ajax({
+
+                                url: myurl,
+
+                                type: "get",
+                                dataType: "json",
+                                //jsonp   : "callback",
+                                timeout: 5 * 1000,
+                                error: function (xhr, ajaxOptions, thrownError) {
+                                    alert(xhr.statusText);
+                                    alert(xhr.responseText);
+                                    alert(xhr.status);
+                                    alert(thrownError);
+
+                                },
+                                success: function (data) {
+                                    var json = eval(data); //数组
+                                    if(json.length==10){
+                                        document.getElementById("load_more").style.display="block"
+                                        loading=false
+                                    }else if(json.length<10) {
+                                        document.getElementById("load_more").style.display="none"
+                                        loading=true;
+                                    }
+                                   // myjson = json;
+                                    myjson=myjson.concat(json);
+                                    var tt = "";
+                                    //$("#cell2").find(".weui-cell").remove();
+                                    $.each(json, function (index) {
+                                        var html = "";
+                                        //循环获取数据
+                                        //alert(JSON.stringify(json[index]))
+                                        var item = json[index];
+                                        var stype = item.stype;
+                                        var site = item.site;
+                                        var addr = item.addr;
+                                        var lng = item.lng;
+                                        var lat = item.lat;
+                                        var jtk = item.jiaotongka;
+                                        var htk = item.hutongka;
+                                        var lyk = item.lvyouka;
+                                        end = new LngLat(lng, lat);
+                                        var distance = calculateLineDistance(start, end);
+                                        //distance=distance.substring(0,distance.indexOf("."))
+                                        distance = Math.floor(distance);
+                                        html += '<div  class="weui-cell">';
+                                        html += '<div  class="weui-cell__bd">';
+                                        html += '<p>' + stype + '-' + site + '</p>';
+                                        html += '<p style="font-size:12px; padding-left:2px"><font color="#a4a4a4">' + addr + '</font></p>';
+                                        html += '</div>'
+                                        html += '<div class="weui-cell__ft">';
+                                        if (jtk.length > 0) {
+                                            html += '<img height="23px" width="25px" src="pic/e1.png">';
+                                        }
+                                        if (lyk.length > 0) {
+                                            html += '<img style="margin-left: 3px" height="23px" width="25px" src="pic/e2.png">';
+                                        }
+                                        if (htk.length > 0) {
+                                            html += '<img style="margin-left: 3px" height="23px" width="25px" src="pic/e3.png">';
+                                        }
+
+
+                                        html += '<p style="color: #a4a4a4">' + distance + '米</p>';
+                                        html += '</div>';
+                                        html += '</div>';
+                                        $("#cell2").append(html);
+
+                                    });
+                                    var items = $("#cell2").find(".weui-cell")
+                                    for (var i = 0; i < items.length; i++) {
+                                        var a = items[i];
+                                        a.index = i;//给每个className为child的元素添加index属性;
+                                        a.onclick = function () {
+
+                                            sessionStorage.setItem("jsonstring",JSON.stringify(myjson[this.index]))
+                                            goto_detail(myjson[this.index].code)
+                                        }
+                                    }
+
+                                }
+                            });
+
+
+
+
+            }
+        }
+        $(window).scroll(function(){
+            console.log("滚动条到顶部的垂直高度：" +  $(window).scrollTop() );
+            console.log("页面的文档高度：" +  $(document).height() );
+            console.log("浏览器的高度：" +  $(window).height() );
+            ata();
+        })
+		function reload_json() {
+            myjson=JSON.parse(jsonstring);
+            if((myjson.length%10)==0){
+                document.getElementById("load_more").style.display="block"
+                loading=false
+            }else {
+                document.getElementById("load_more").style.display="none"
+                loading=true;
+            }
+
+
+
+
+            var mytimestamp = (new Date()).valueOf();
+            var time=mytimestamp-sessionStorage.getItem("time");
+            if(time/1000>600){
+                get_location()
+            }
+            var mylongitude = sessionStorage.getItem("lng");
+            var mylatitude = sessionStorage.getItem("lat");
+                        var start = new LngLat(mylongitude, mylatitude);
+                        for (var i = 0; i < myjson.length; i++) {
+                            var html = "";
+                            //循环获取数据
+
+                            var item = myjson[i];
+                            var stype = item.stype;
+                            var site = item.site;
+                            var addr = item.addr;
+                            var lng = item.lng;
+                            var lat = item.lat;
+                            var jtk = item.jiaotongka;
+                            var htk = item.hutongka;
+                            var lyk = item.lvyouka;
+                            end = new LngLat(lng, lat);
+                            var distance = calculateLineDistance(start, end);
+                            //distance=distance.substring(0,distance.indexOf("."))
+                            distance = Math.floor(distance);
+                            html += '<div  class="weui-cell">';
+                            html += '<div  class="weui-cell__bd">';
+                            html += '<p>' + stype + '-' + site + '</p>';
+                            html += '<p style="font-size:12px; padding-left:2px"><font color="#a4a4a4">' + addr + '</font></p>';
+                            html += '</div>'
+                            html += '<div class="weui-cell__ft">';
+                            if (jtk.length > 0) {
+                                html += '<img height="23px" width="25px" src="pic/e1.png">';
+                            }
+                            if (lyk.length > 0) {
+                                html += '<img style="margin-left: 3px" height="23px" width="25px" src="pic/e2.png">';
+                            }
+                            if (htk.length > 0) {
+                                html += '<img style="margin-left: 3px" height="23px" width="25px" src="pic/e3.png">';
+                            }
+
+
+                            html += '<p style="color: #a4a4a4">' + distance + '米</p>';
+                            html += '</div>';
+                            html += '</div>';
+                            $("#cell2").append(html);
+
+
+                        }
+                        var items = $("#cell2").find(".weui-cell")
+                        for (var i = 0; i < items.length; i++) {
+                            var a = items[i];
+                            a.index = i;//给每个className为child的元素添加index属性;
+                            a.onclick = function () {
+
+                                sessionStorage.setItem("jsonstring", JSON.stringify(myjson[this.index]))
+
+                                goto_detail(myjson[this.index].code)
+                            }
+                        }
+
+        }
+        function get_location() {
+            if(navigator.geolocation){
+                navigator.geolocation.getCurrentPosition(
+                    function (position) {
+                    sessionStorage.setItem("lng",position.coords.longitude);
+                    sessionStorage.setItem("lat",position.coords.latitude);
+                    var timestamp = (new Date()).valueOf();
+                    sessionStorage.setItem("time",timestamp);
+
+
+                },
+                 function (e) {
+                        var msg = e.code;
+                        var dd = e.message;
+                        console.log(msg)
+                        console.log(dd)
+                    }
+                )
+
+            }
+        }
+        function get_location_data() {
+            if(navigator.geolocation){
+                navigator.geolocation.getCurrentPosition(
+                    function (position) {
+                        sessionStorage.setItem("lng",position.coords.longitude);
+                        sessionStorage.setItem("lat",position.coords.latitude);
+                        var timestamp = (new Date()).valueOf();
+                        sessionStorage.setItem("time",timestamp);
+
+                        var mylongitude;
+                        var mylatitude;
+                        var start;
+                        var end;
+
+                        //alert( position.coords.longitude)
+                        mylongitude = sessionStorage.getItem("lng");
+                        mylatitude = sessionStorage.getItem("lat")
+                        start = new LngLat(mylongitude, mylatitude);
+                        var myurl=base_url+"&nearby=500" + "&longitude=" + mylongitude + "&latitude=" + mylatitude;
+                        append_url=myurl;
+                        $.ajax({
+
+                            url: myurl,
+
+                            type: "get",
+                            dataType: "json",
+                            //jsonp   : "callback",
+                            timeout: 5 * 1000,
+                            error: function (xhr, ajaxOptions, thrownError) {
+                                alert(xhr.statusText);
+                                alert(xhr.responseText);
+                                alert(xhr.status);
+                                alert(thrownError);
+
+                            },
+                            success: function (data) {
+                                var json = eval(data); //数组
+                                if(json.length==10){
+                                    document.getElementById("load_more").style.display="block"
+                                    loading=false;
+                                }else if(json.length<10) {
+                                    document.getElementById("load_more").style.display="none"
+                                    loading=true;
+                                }
+                                currentNum=0;
+                                myjson = json;
+                                var tt = "";
+                                $("#cell2").find(".weui-cell").remove();
+                                $.each(json, function (index) {
+                                    var html = "";
+                                    //循环获取数据
+                                    //alert(JSON.stringify(json[index]))
+                                    var item = json[index];
+                                    var stype = item.stype;
+                                    var site = item.site;
+                                    var addr = item.addr;
+                                    var lng = item.lng;
+                                    var lat = item.lat;
+                                    var jtk = item.jiaotongka;
+                                    var htk = item.hutongka;
+                                    var lyk = item.lvyouka;
+                                    end = new LngLat(lng, lat);
+                                    var distance = calculateLineDistance(start, end);
+                                    //distance=distance.substring(0,distance.indexOf("."))
+                                    distance = Math.floor(distance);
+                                    html += '<div  class="weui-cell">';
+                                    html += '<div  class="weui-cell__bd">';
+                                    html += '<p>' + stype + '-' + site + '</p>';
+                                    html += '<p style="font-size:12px; padding-left:2px"><font color="#a4a4a4">' + addr + '</font></p>';
+                                    html += '</div>'
+                                    html += '<div class="weui-cell__ft">';
+                                    if (jtk.length > 0) {
+                                        html += '<img height="23px" width="25px" src="pic/e1.png">';
+                                    }
+                                    if (lyk.length > 0) {
+                                        html += '<img style="margin-left: 3px" height="23px" width="25px" src="pic/e2.png">';
+                                    }
+                                    if (htk.length > 0) {
+                                        html += '<img style="margin-left: 3px" height="23px" width="25px" src="pic/e3.png">';
+                                    }
+
+
+                                    html += '<p style="color: #a4a4a4">' + distance + '米</p>';
+                                    html += '</div>';
+                                    html += '</div>';
+                                    $("#cell2").append(html);
+
+                                });
+                                var items = $("#cell2").find(".weui-cell")
+                                for (var i = 0; i < items.length; i++) {
+                                    var a = items[i];
+                                    a.index = i;//给每个className为child的元素添加index属性;
+                                    a.onclick = function () {
+
+                                        sessionStorage.setItem("jsonstring",JSON.stringify(myjson[this.index]));
+                                        sessionStorage.setItem("appendurl",append_url);
+                                        goto_detail(myjson[this.index].code)
+                                    }
+                                }
+
+                            }
+                        });
+
+
+                    },
+                    function (e) {
+                        var msg = e.code;
+                        var dd = e.message;
+                        console.log(msg)
+                        console.log(dd)
+                    }
+                )
+
+            }
+        }
+
+    </script>
+    <script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery-weui/1.2.0/js/jquery-weui.min.js"></script>
+	<!--<script src="//cdn.bootcss.com/jquery-weui/0.8.3/js/swiper.min.js"></script>
+	<script src="//cdn.bootcss.com/jquery-weui/0.8.3/js/city-picker.min.js"></script>-->
+	
+
+</body>
+</html>

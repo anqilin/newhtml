@@ -1,0 +1,9 @@
+﻿.bodylogoDiv{
+	position: static;
+	background-image:url(../theme/bodylogo.png);
+	background-repeat: no-repeat;
+	background-position-y: 100%;
+	background-size: 100%;
+	background-color: #f4f4f4;
+	margin-top: -76px;
+}

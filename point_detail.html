@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html style="background-color: #FFFFFF" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>网点详情</title>
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="gride.css" />
+    <script type="text/javascript" src="./js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="lib/jquery.raty.js"></script>
+    <meta name="format-detection" content="telephone=no, email=no">
+    <script type="text/javascript" src="http://tajs.qq.com/stats?sId=37342703" charset="UTF-8"></script>
+    <link rel="stylesheet" href="css/frozenui.css"/>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/weui/1.1.2/style/weui.min.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/jquery-weui/1.2.0/css/jquery-weui.min.css">
+    <link rel="stylesheet" href="lib/jquery.raty.css">
+</head>
+<body  bgcolor="#ffffff">
+    <p id="title" style="font-size:16pt ;margin-top:15px; padding-left: 15px;background-color:#ffffff">良友便利</p>
+
+
+    <div style="background-color: #FFFFFF">
+        <div style="width: 100%">
+            <div style="background-color: #ffffff;border-color: #FFFFFF;padding: 5px" class="weui-cell">
+
+                <div class="weui-cell__bd">
+                    <p id="adress" style="font-size:14px; padding-left:10px; color: #a4a4a4">黄浦区新闸路200弄1231号</p>
+                </div>
+                <div class="weui-cell__ft">
+                    <img onclick="goto_map()" style="margin-top: 5px; margin-right: 10px" height="28px" width="60px" src="pic/btn_map.png">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div style="background-color: #FFFFFF">
+        <div style="width:100%" id="div1">
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><img width="55px" height="22px" src="pic/atag_jiao.png"></div>
+                <div class="weui-cell__bd">
+                    <p id="jt_text" style="padding-left: 5px"> </p>
+                </div>
+            </div>
+        </div>
+
+        <div style="width:100%" id="div2">
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><img width="55px" height="22px" src="pic/atag_hu.png"></div>
+                <div class="weui-cell__bd">
+                    <p id="hu_text" style="padding-left: 5px">  </p>
+                </div>
+            </div>
+        </div>
+        <div style="width:100%" id="div3">
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><img width="55px" height="22px" src="pic/atag_lvyou.png"></div>
+                <div class="weui-cell__bd">
+                    <p id="ly_text" style="padding-left: 5px">  </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div style="height: 25%; background-color: #FFFFFF">
+        <center><img id="point_img" width="90%" height="100%" style="margin-top: 10px" src="pic/lianyou.png" ></center>
+    </div>
+
+    <div class="weui-tab__bd">
+        <div id="tab1" class="weui-tab__bd-item weui-tab__bd-item--active">
+            <div id="cell1" style="margin-top:0px" class="weui-cells">
+                <div class="weui-cell">
+
+                    <div class="weui-cell__bd">
+                        <p style="font-size:14px; padding-left:2px;color: #a4a4a4">营业时间</p>
+                    </div>
+                    <div class="weui-cell__ft">
+                        <p id="point_buss" style="font-size: small">每天7:00~23:00 (法定节假日除外)</p>
+                    </div>
+                </div>
+                <div class="weui-cell">
+
+                    <div class="weui-cell__bd">
+                        <p  style="font-size:14px; padding-left:2px;color: #a4a4a4">联系电话</p>
+                    </div>
+                    <div style="display: flex" class="weui-cell__ft">
+                        <p id="tel_text" style="margin-right: 10px"></p>
+                        <img id="call_phone" onclick="call_phone()" height="25px" width="25px" src="pic/btn_tel.png">
+                    </div>
+
+                </div>
+
+                <div class="weui-cell">
+                    <div class="weui-cell__bd">
+                        <p style="font-size:14px; padding-left:2px;color: #a4a4a4">评分</p>
+                    </div>
+                    <div class="weui-cell__ft">
+                        <div id="score"></div>
+                    </div>
+                </div>
+
+                <div onclick="goto_score()" style="background-color: #FFFFFF" class="weui-cell">
+
+                    <div class="weui-cell__bd">
+                        <p style="font-size:14px; padding-left:2px;color: #2dac76">我来打分</p>
+                    </div>
+                    <div style="display: flex" class="weui-cell__ft">
+                        <img  height="30px" width="30px" src="pic/btn_write.png">
+                    </div>
+
+                </div>
+                <div onclick="goto_error()" style="background-color: #FFFFFF" class="weui-cell">
+
+                    <div class="weui-cell__bd">
+                        <p style="font-size:14px; padding-left:2px; color: #2dac76">信息纠错</p>
+                    </div>
+                    <div style="display: flex" class="weui-cell__ft">
+                        <img  height="30px" width="30px" src="pic/btn_wrong.png">
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <script>
+        $.fn.raty.defaults.path = 'lib/images';
+
+        $("#score").raty({readOnly:true,score:3});
+        
+        function goto_score() {
+            window.location.href='score.html';
+        }
+        function goto_error() {
+            window.location.href='error.html';
+        }
+        function goto_map() {
+            window.location.href='point_map.html';
+            //window.location.href='point_map.html?no='+code+"&address="+encodeURI(adress)+"&lng="+lnge+"&lat="+late+"&stype="+encodeURI(point_stype);
+        }
+        function call_phone() {
+            window.location.href = "tel:"+telphone;
+        }
+        var thisURL = document.URL;
+        var  getval =thisURL.split('?')[1];
+        var code= getval.split("=")[1];
+        var myjson;
+        var adress;
+		var lnge;
+		var late;
+		var point_stype;
+		var jsonstring=sessionStorage.getItem("jsonstring")
+		//alert(jsonstring);
+		myjson=JSON.parse(jsonstring);
+        var item=myjson;
+        var stype=item.stype;
+        var site = item.site;
+        var addr = item.addr;
+        var lng= item.lng;
+        var lat=item.lat;
+        var jtk=item.jiaotongka;
+        var htk=item.hutongka;
+        var lyk=item.lvyouka;
+        var photes= item.photo;
+		var telphone=item.teln;
+		var buss=item.buss;
+		var myscore=Number(item.score);
+		//alert(myscore);
+        $("#score").raty({readOnly:true,score:function() {
+				return myscore;
+			}
+		});
+        
+        document.getElementById("title").innerText=stype;
+        document.getElementById("adress").innerText=addr;
+        document.getElementById("point_img").src=photes[0];
+		if(telphone.length>0){
+			document.getElementById("tel_text").innerText=telphone;
+		}else{
+			document.getElementById("tel_text").innerText="";
+			document.getElementById("call_phone").style.display="none"
+		}
+		document.getElementById("point_buss").innerText=buss;
+		
+        if(jtk.length==0){
+            document.getElementById("div1").style.display="none"
+        }else {
+            var text1
+            for (var i=0;i<jtk.length;i++) {
+                text1=text1 +jtk[i]+" ";
+            }
+            text1=text1.replace("undefined","")
+            document.getElementById("jt_text").innerText=text1;
+        }
+        if(htk.length==0){
+            document.getElementById("div2").style.display="none"
+        }
+        else {
+            var text2
+            for (var i=0;i<htk.length;i++) {
+                text2= text2 +htk[i]+" ";
+            }
+            text2=text2.replace("undefined","")
+            document.getElementById("hu_text").innerText=text2;
+        }
+        if(lyk.length==0){
+            document.getElementById("div3").style.display="none"
+        }else {
+            var text3;
+            for (var i=0;i<lyk.length;i++) {
+                text3=text3 +lyk[i]+" ";
+                //alert(text3);
+            }
+            text3=text3.replace("undefined","")
+            document.getElementById("ly_text").innerText=text3;
+        }
+        //alert(photes[0])
+        adress=addr;
+        lnge=lng;
+        late=lat;
+        point_stype=stype;
+        //var end = new LngLat(lng, lat);
+        // var distance=calculateLineDistance(start, end);
+        //distance=distance.substring(0,distance.indexOf("."))
+
+        var url= "https://online.sptcc.com:8445/MerchantSerch/Merchant?code="+code;
+
+       /* $(function () {
+            //alert(url)
+
+            $.ajax({
+
+                url  : "https://online.sptcc.com:8445/MerchantSerch/Merchant?code="+code,
+
+                type	  : "get",
+                dataType: "json",
+                //jsonp   : "callback",
+                timeout : 5*1000,
+                error   : function(xhr, ajaxOptions, thrownError)
+                {
+                    alert(xhr.statusText);
+                    alert(xhr.responseText);
+                    alert(xhr.status);
+                    alert(thrownError);
+
+                },
+                success : function(data){
+                    var json = eval(data); //数组
+                    myjson=json;
+                    var tt = "";
+                    $.each(json, function (index) {
+                        var html = "";
+                        //循环获取数据
+                        //alert(JSON.stringify(json[index]))
+                        var item=json[index];
+                        var stype=item.stype;
+                        var site = item.site;
+                        var addr = item.addr;
+                        var lng= item.lng;
+                        var lat=item.lat;
+                        var jtk=item.jiaotongka;
+                        var htk=item.hutongka;
+                        var lyk=item.lvyouka;
+                        var photes= item.photo;
+                        //alert(stype)
+                        document.getElementById("title").innerText=stype;
+                        document.getElementById("adress").innerText=addr;
+                        document.getElementById("point_img").src=photes[0];
+                        if(jtk.length==0){
+                            document.getElementById("div1").style.display="none"
+                        }else {
+                            var text1
+                            for (var i=0;i<jtk.length;i++) {
+                                text1=text1 +jtk[i]+" ";
+                            }
+                            text1=text1.replace("undefined","")
+                            document.getElementById("jt_text").innerText=text1;
+                        }
+                        if(htk.length==0){
+                            document.getElementById("div2").style.display="none"
+                        }
+                        else {
+                            var text2
+                            for (var i=0;i<htk.length;i++) {
+                                text2= text2 +htk[i]+" ";
+                            }
+                            text2=text2.replace("undefined","")
+                            document.getElementById("hu_text").innerText=text2;
+                        }
+                        if(lyk.length==0){
+                            document.getElementById("div3").style.display="none"
+                        }else {
+                            var text3;
+                            for (var i=0;i<lyk.length;i++) {
+                                text3=text3 +lyk[i]+" ";
+                                //alert(text3);
+                            }
+                            text3=text3.replace("undefined","")
+                            document.getElementById("ly_text").innerText=text3;
+                        }
+                        //alert(photes[0])
+                        adress=addr;
+						lnge=lng;
+						late=lat;
+						point_stype=stype;
+                        //var end = new LngLat(lng, lat);
+                       // var distance=calculateLineDistance(start, end);
+                        //distance=distance.substring(0,distance.indexOf("."))
+
+
+                    });
+
+
+                }
+            });
+
+        })*/
+
+    </script>
+
+
+
+    <script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery-weui/1.2.0/js/jquery-weui.min.js"></script>
+    <script src="//cdn.bootcss.com/jquery-weui/0.8.3/js/swiper.min.js"></script>
+    <script src="//cdn.bootcss.com/jquery-weui/0.8.3/js/city-picker.min.js"></script>
+
+</body>
+</html>
