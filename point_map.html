@@ -85,6 +85,7 @@
         var longitude=myjson.lng;
         var latitude=myjson.lat;
         var point_stype=myjson.stype;
+        var distance=myjson.juli;
         var mylongitude=sessionStorage.getItem("lng");
         var mylatitude=sessionStorage.getItem("lat");
 
@@ -191,9 +192,15 @@
         }
 
         function goto_line() {
+            var mode;
+            if(distance>500){
+                mode="bus";
+            }else {
+                mode="walk";
+            }
            // window.location.href='point_line_map.html';
             window.location.href='https://uri.amap.com/navigation?from='+mylongitude+","+mylatitude+",startpoint&to="
-            +longitude+","+latitude+",endpoint";
+            +longitude+","+latitude+",endpoint"+"&src=mypage"+"&mode="+mode;
             //window.location.href='point_line_map.html?no='+code+"&address="+encodeURI(address)+"&lng="+longitude+"&lat="+latitude+"&stype="+encodeURI(point_stype);
         }
 
