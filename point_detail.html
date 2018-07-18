@@ -173,50 +173,54 @@
 				return 0;
 			}
 		});
+        window.onload=function(){
+            document.getElementById("title").innerText=stype;
+            document.getElementById("adress").innerText=addr;
+            document.getElementById("point_img").src=photes[0];
+            if(telphone.length>0){
+                document.getElementById("tel_text").innerText=telphone;
+            }else{
+                document.getElementById("tel_text").innerText="";
+                document.getElementById("call_phone").style.display="none"
+            }
+            document.getElementById("point_buss").innerText=buss;
+
+            if(jtk.length==0){
+                document.getElementById("div1").style.display="none"
+            }else {
+                var text1
+                for (var i=0;i<jtk.length;i++) {
+                    text1=text1 +jtk[i]+" ";
+                }
+                text1=text1.replace("undefined","")
+                document.getElementById("jt_text").innerText=text1;
+            }
+            if(htk.length==0){
+                document.getElementById("div2").style.display="none"
+            }
+            else {
+                var text2
+                for (var i=0;i<htk.length;i++) {
+                    text2= text2 +htk[i]+" ";
+                }
+                text2=text2.replace("undefined","")
+                document.getElementById("hu_text").innerText=text2;
+            }
+            if(lyk.length==0){
+                document.getElementById("div3").style.display="none"
+            }else {
+                var text3;
+                for (var i=0;i<lyk.length;i++) {
+                    text3=text3 +lyk[i]+" ";
+                    //alert(text3);
+                }
+                text3=text3.replace("undefined","")
+                document.getElementById("ly_text").innerText=text3;
+            }
+
+        }
         
-        document.getElementById("title").innerText=stype;
-        document.getElementById("adress").innerText=addr;
-        document.getElementById("point_img").src=photes[0];
-		if(telphone.length>0){
-			document.getElementById("tel_text").innerText=telphone;
-		}else{
-			document.getElementById("tel_text").innerText="";
-			document.getElementById("call_phone").style.display="none"
-		}
-		document.getElementById("point_buss").innerText=buss;
-		
-        if(jtk.length==0){
-            document.getElementById("div1").style.display="none"
-        }else {
-            var text1
-            for (var i=0;i<jtk.length;i++) {
-                text1=text1 +jtk[i]+" ";
-            }
-            text1=text1.replace("undefined","")
-            document.getElementById("jt_text").innerText=text1;
-        }
-        if(htk.length==0){
-            document.getElementById("div2").style.display="none"
-        }
-        else {
-            var text2
-            for (var i=0;i<htk.length;i++) {
-                text2= text2 +htk[i]+" ";
-            }
-            text2=text2.replace("undefined","")
-            document.getElementById("hu_text").innerText=text2;
-        }
-        if(lyk.length==0){
-            document.getElementById("div3").style.display="none"
-        }else {
-            var text3;
-            for (var i=0;i<lyk.length;i++) {
-                text3=text3 +lyk[i]+" ";
-                //alert(text3);
-            }
-            text3=text3.replace("undefined","")
-            document.getElementById("ly_text").innerText=text3;
-        }
+
         //alert(photes[0])
         adress=addr;
         lnge=lng;
@@ -228,96 +232,7 @@
 
         var url= "https://online.sptcc.com:8445/MerchantSerch/Merchant?code="+code;
 
-       /* $(function () {
-            //alert(url)
 
-            $.ajax({
-
-                url  : "https://online.sptcc.com:8445/MerchantSerch/Merchant?code="+code,
-
-                type	  : "get",
-                dataType: "json",
-                //jsonp   : "callback",
-                timeout : 5*1000,
-                error   : function(xhr, ajaxOptions, thrownError)
-                {
-                    alert(xhr.statusText);
-                    alert(xhr.responseText);
-                    alert(xhr.status);
-                    alert(thrownError);
-
-                },
-                success : function(data){
-                    var json = eval(data); //数组
-                    myjson=json;
-                    var tt = "";
-                    $.each(json, function (index) {
-                        var html = "";
-                        //循环获取数据
-                        //alert(JSON.stringify(json[index]))
-                        var item=json[index];
-                        var stype=item.stype;
-                        var site = item.site;
-                        var addr = item.addr;
-                        var lng= item.lng;
-                        var lat=item.lat;
-                        var jtk=item.jiaotongka;
-                        var htk=item.hutongka;
-                        var lyk=item.lvyouka;
-                        var photes= item.photo;
-                        //alert(stype)
-                        document.getElementById("title").innerText=stype;
-                        document.getElementById("adress").innerText=addr;
-                        document.getElementById("point_img").src=photes[0];
-                        if(jtk.length==0){
-                            document.getElementById("div1").style.display="none"
-                        }else {
-                            var text1
-                            for (var i=0;i<jtk.length;i++) {
-                                text1=text1 +jtk[i]+" ";
-                            }
-                            text1=text1.replace("undefined","")
-                            document.getElementById("jt_text").innerText=text1;
-                        }
-                        if(htk.length==0){
-                            document.getElementById("div2").style.display="none"
-                        }
-                        else {
-                            var text2
-                            for (var i=0;i<htk.length;i++) {
-                                text2= text2 +htk[i]+" ";
-                            }
-                            text2=text2.replace("undefined","")
-                            document.getElementById("hu_text").innerText=text2;
-                        }
-                        if(lyk.length==0){
-                            document.getElementById("div3").style.display="none"
-                        }else {
-                            var text3;
-                            for (var i=0;i<lyk.length;i++) {
-                                text3=text3 +lyk[i]+" ";
-                                //alert(text3);
-                            }
-                            text3=text3.replace("undefined","")
-                            document.getElementById("ly_text").innerText=text3;
-                        }
-                        //alert(photes[0])
-                        adress=addr;
-						lnge=lng;
-						late=lat;
-						point_stype=stype;
-                        //var end = new LngLat(lng, lat);
-                       // var distance=calculateLineDistance(start, end);
-                        //distance=distance.substring(0,distance.indexOf("."))
-
-
-                    });
-
-
-                }
-            });
-
-        })*/
 
     </script>
 
