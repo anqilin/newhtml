@@ -96,7 +96,7 @@
     <script>
         $.fn.raty.defaults.path = 'lib/images';
 
-        $("#score").raty({score:3,
+        $("#score").raty({score:0,
 			click: function(score, evt) {
 				myscore=score;
 			}
@@ -112,7 +112,7 @@
 		var button_cells=$("#not_enough").find(".ui-btn");
 		var button_staues=new Array(0,0,0,0,0,0);
 		var select_items=new Array("服务态度差","业务不熟练","停车困难","等待队伍长","地方难找","环境差");
-		var myscore;
+		var myscore=0;
 		var base_url="https://online.sptcc.com:8445/handapp_app/NoticePushServlet?type=3";
 		for (var i=0;i<button_cells.length;i++){
 		    var item=button_cells[i]
@@ -135,6 +135,11 @@
 
         }
         function sub_data() {
+		    if(myscore==0){
+
+                $.toast("请打分后提交", "text");
+                return;
+            }
 		    var tijiao=""
 		    for (var i=0;i<select_items.length;i++){
 		        if(button_staues[i]==1){
@@ -146,11 +151,14 @@
 			var note="";
             note=$("#note").val();
 			if(tijiao.length==0){
-				tijiao="";
+                $.toast("请选择不足之处后提交", "text");
+                return;
 			}
 			if(note.length==0){
-				note="";
+                $.toast("请填写备注后提交", "text");
+                return;
 			}
+			//alert(myscore)
 			var myurl=base_url+"&score="+myscore+"&errorType="+tijiao+"&note="+note+"&code="+code;
             $.ajax({
 
