@@ -33,36 +33,36 @@
 
 <div style="width:100%; background-color: #FFFFFF" id="no_enough">
     <div>
-        <p style=" margin-left:25px; padding-top:10px; font-size:12px;color: #2dac76">不足之处请指出</p>
+        <p style=" margin-left:25px; padding-top:10px; font-size:12px;color: #2dac76">请指出错误之处</p>
         <div style="padding-left:20px;padding-right: 20px;padding-top: 5px;padding-bottom: 0px" class="weui-flex">
             <div style="padding:5px" class="weui-flex__item">
-                <button style="width:100%;color: #2dac76" class="ui-btn"><font style="font-size: 13px" >服务态度差</font>
+                <button style="width:100%;color: #2dac76" class="ui-btn"><font style="font-size: 13px" >电话有误</font>
                 </button>
             </div>
             <div style="padding:5px" class="weui-flex__item">
-                <button style="width:100%;color: #2dac76" class="ui-btn"><font style="font-size: 13px" >业务不熟练</font>
+                <button style="width:100%;color: #2dac76" class="ui-btn"><font style="font-size: 13px" >地址有误</font>
                 </button>
             </div>
 
         </div>
         <div style="padding-left:20px;padding-right: 20px;padding-top: 0px;padding-bottom: 0px" class="weui-flex">
             <div style="padding:5px" class="weui-flex__item">
-                <button style="width:100%;color: #2dac76" class="ui-btn"><font style="font-size: 13px" >停车困难</font>
+                <button style="width:100%;color: #2dac76" class="ui-btn"><font style="font-size: 13px" >营业时间有误</font>
                 </button>
             </div>
             <div style="padding:5px" class="weui-flex__item">
-                <button style="width:100%;color: #2dac76; font-size:12px" class="ui-btn"><font style="font-size: 13px" >等待队伍长</font>
+                <button style="width:100%;color: #2dac76; font-size:12px" class="ui-btn"><font style="font-size: 13px" >地图定位有误</font>
                 </button>
             </div>
 
         </div>
         <div style="padding-left:20px;padding-right: 20px;padding-top: 0px;padding-bottom: 5px" class="weui-flex">
             <div style="padding:5px" class="weui-flex__item">
-                <button style="width:100%;color: #2dac76" class="ui-btn"><font style="font-size: 13px" >地方难找</font>
+                <button style="width:100%;color: #2dac76" class="ui-btn"><font style="font-size: 13px" >网点名称有误</font>
                 </button>
             </div>
             <div style="padding:5px" class="weui-flex__item">
-                <button style="width:100%;color: #2dac76; font-size:12px" class="ui-btn"><font style="font-size: 13px" >环境差</font>
+                <button style="width:100%;color: #2dac76; font-size:12px" class="ui-btn"><font style="font-size: 13px" >网点照片有误</font>
                 </button>
             </div>
 
@@ -153,7 +153,7 @@
 
 		var button_cells=$("#no_enough").find(".ui-btn");
 		var button_staues=new Array(0,0,0,0,0,0);
-		var select_items=new Array("服务态度差","业务不熟练","停车困难","等待队伍长","地方难找","环境差");
+		var select_items=new Array("电话有误","地址有误","营业时间有误","地图定位有误","网点名称有误","网点照片有误");
 		var myscore;
 		var base_url="https://online.sptcc.com:8445/handapp_app/NoticePushServlet?type=2";
 		for (var i=0;i<button_cells.length;i++){
@@ -190,10 +190,12 @@
 			var note="";
             note=$("#note").val();
 			if(tijiao.length==0){
-				tijiao="";
+                $.toast("请选择错误类型后提交", "text");
+                return;
 			}
 			if(note.length==0){
-				note="";
+                $.toast("请备注信息后提交", "text");
+                return;
 			}
 			if(phone.length==0){
 			    phone="";
