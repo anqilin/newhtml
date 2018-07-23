@@ -144,9 +144,7 @@
         function call_phone() {
             window.location.href = "tel:"+telphone;
         }
-        var thisURL = document.URL;
-        var  getval =thisURL.split('?')[1];
-        var code= getval.split("=")[1];
+
         var myjson;
         var adress;
 		var lnge;
@@ -220,18 +218,6 @@
 
         }
         
-
-        //alert(photes[0])
-        adress=addr;
-        lnge=lng;
-        late=lat;
-        point_stype=stype;
-        //var end = new LngLat(lng, lat);
-        // var distance=calculateLineDistance(start, end);
-        //distance=distance.substring(0,distance.indexOf("."))
-
-        var url= "https://online.sptcc.com:8445/MerchantSerch/Merchant?code="+code;
-
 
 
     </script>
