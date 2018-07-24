@@ -278,7 +278,7 @@
 	
 
 	<div id="about" style=" height:inherit; margin-bottom:70px" class="weui-popup__container popup-top">
-	  <div class="weui-popup__overlay"></div>
+	  <div class="weui-popup__overlay" onclick="hide_popup()"></div><!--height设置为50%时顶部不会覆盖阴影-->
 	  <div class="weui-popup__modal">
 		<div id="wrap">
 			<div style="width:20%" id="div1">
@@ -413,7 +413,7 @@
 	</div>
 	
 	<div id="about2" style=" height:inherit; margin-bottom:70px" class="weui-popup__container popup-top">
-	  <div class="weui-popup__overlay"></div>
+	  <div class="weui-popup__overlay" onclick="hide_popup()"></div>
 	  <div class="weui-popup__modal">
 		<div>
 
@@ -503,7 +503,7 @@
 	</div>
 	
 	<div id="about3" style=" height:inherit; margin-bottom:100px" class="weui-popup__container popup-top">
-	  <div class="weui-popup__overlay"></div>
+	  <div class="weui-popup__overlay" onclick="hide_popup()"></div>
 	  <div class="weui-popup__modal">
 		<div>
 
@@ -769,6 +769,15 @@
                 document.body.scrollTop=0+"px";
 			}			
 	　
+		}
+		function hide_popup(){
+		    if(flag==1){
+		        demo1();
+			}else if(flag2==1){
+		        demo2();
+			}else if (flag3==1){
+		        demo3();
+			}
 		}
 		
 		$('input').bind('input propertychange', function() {
