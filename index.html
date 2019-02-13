@@ -175,13 +175,13 @@
 	
 	<div  id="mywei_tab" style="margin-top:0px;" class="weui-tab">
 	  <div id="web_navbar" class="weui-navbar">
-		<a onclick="demo1()" class="weui-navbar__item weui-bar__item--on" href="#tab1">
+		<a onclick="demo1()" class="weui-navbar__item weui-bar__item--on" href="#about">
 		  位置
 		</a>
-		<a onclick="demo2()" class="weui-navbar__item" href="#tab1" >
+		<a onclick="demo2()" class="weui-navbar__item" href="#about2" >
 		  服务类型
 		</a>
-		<a onclick="demo3()" class="weui-navbar__item" href="#tab1" >
+		<a onclick="demo3()" class="weui-navbar__item" href="#about3" >
 		  卡片种类
 		</a>
 	  </div>
@@ -833,7 +833,15 @@
 
                         //alert( position.coords.longitude)
             mylongitude = sessionStorage.getItem("lng");
-            mylatitude = sessionStorage.getItem("lat")
+            mylatitude = sessionStorage.getItem("lat");
+            if(mylongitude==null||mylongitude==""){
+                var zuobiao = GPS.gcj_encrypt(31.2288330000, 121.4751900000);
+
+                sessionStorage.setItem("lng", zuobiao.lon);
+                sessionStorage.setItem("lat", zuobiao.lat);
+                mylongitude=zuobiao.lon;
+                mylatitude=zuobiao.lat;
+			}
             var mytimestamp = (new Date()).valueOf();
             var time=mytimestamp-sessionStorage.getItem("time");
             if(time/1000>600){
@@ -1067,6 +1075,7 @@
             var sh_value = "";
             mylongitude = sessionStorage.getItem("lng");
             mylatitude = sessionStorage.getItem("lat");
+
             if (card_jtk_staues == 1) {
                 cardvalue = cardvalue + ",0"
             }
@@ -1119,6 +1128,15 @@
             }
             mylongitude = sessionStorage.getItem("lng");
             mylatitude = sessionStorage.getItem("lat");
+            if(mylongitude==null||mylongitude==""){
+                var zuobiao = GPS.gcj_encrypt(31.2288330000, 121.4751900000);
+
+                sessionStorage.setItem("lng", zuobiao.lon);
+                sessionStorage.setItem("lat", zuobiao.lat);
+                mylongitude=zuobiao.lon;
+                mylatitude=zuobiao.lat;
+            }
+
                         start = new LngLat(mylongitude, mylatitude);
                         if (nearby.length > 0) {
                             myurl = myurl + "&nearby=" + nearby + "&longitude=" + mylongitude + "&latitude=" + mylatitude;
@@ -1503,7 +1521,9 @@
             if(navigator.geolocation){
                 navigator.geolocation.getCurrentPosition(
                     function (position) {
+
                     var zuobiao=GPS.gcj_encrypt(position.coords.latitude,position.coords.longitude);
+
                     sessionStorage.setItem("lng",zuobiao.lon);
                     sessionStorage.setItem("lat",zuobiao.lat);
                     var timestamp = (new Date()).valueOf();
@@ -1511,11 +1531,11 @@
 
 
                 },
-                 function (e) {
-                        var msg = e.code;
-                        var dd = e.message;
-                        console.log(msg)
-                        console.log(dd)
+                    function (e) {
+                        // var msg = e.code;
+                        var msg = e.message;
+                        //console.log(msg)
+
                     }
                 )
 
@@ -1525,6 +1545,7 @@
             if(navigator.geolocation){
                 navigator.geolocation.getCurrentPosition(
                     function (position) {
+
                         var zuobiao=GPS.gcj_encrypt(position.coords.latitude,position.coords.longitude);
                         //alert(zuobiao.lat+":"+zuobiao.lon);
                         sessionStorage.setItem("lng",zuobiao.lon);
@@ -1632,8 +1653,9 @@
                     function (e) {
                         var msg = e.code;
                         var dd = e.message;
-                        console.log(msg)
+                        //console.log(msg)
                         console.log(dd)
+
                     }
                 )
 
