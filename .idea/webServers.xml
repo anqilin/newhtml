@@ -2,7 +2,7 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="c5dcbf61-fe48-4089-be23-228e414f86b1" name="mypoint" url="https://192.168.2.132:8081">
+      <webServer id="c5dcbf61-fe48-4089-be23-228e414f86b1" name="mypoint" url="https://192.168.2.134:8081">
         <fileTransfer port="0" mountedRoot="E:\wxgzhwdcx" accessType="MOUNT" />
       </webServer>
     </option>

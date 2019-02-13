@@ -563,8 +563,8 @@
 
 		var myjson;
 	    document.getElementById("third_row").style.display="none";
-	    var base_url="https://online.sptcc.com:8445/handapp_app/MerchantSearchServlet?isFW=3";
-	    var base_url2="https://online.sptcc.com:8445/handapp_app/MerchantSearchServlet?isFW=3";
+	    var base_url="https://online.sptcc.com:8443/handapp_app/MerchantSearchServlet?isFW=3";
+	    var base_url2="https://online.sptcc.com:8443/handapp_app/MerchantSearchServlet?isFW=3";
 	    var card_type="&"+"cardType=";
 		var card_jtk_staues=0;
 		var card_htk_staues=0;
@@ -680,15 +680,16 @@
 				oTop=oTop +50;
 
 				obj.style.top= oTop+"px";
-				$.closePopup();
-		　 		$("#about").popup();
+				//$.closePopup();
+		　
                 $(window).scrollTop(0);
                 flag=1;
 				flag2=0;
 				flag3 =0;
-				
+                $("#about").popup();
 			}else if(flag==1){
 				$.closePopup();
+
                 $(window).scrollTop(0);
 
 				flag=0;
@@ -717,16 +718,18 @@
 				oTop=oTop -5;
 				oTop = oTop +50;
                 obj.style.top= oTop+"px";
-				$.closePopup();
-		　 		$("#about2").popup();
+				//$.closePopup();
+		　
+
 				//obj.offsetTop=top
 
 				flag2=1;
 				flag=0;
 				flag3 = 0;
-				 
+                $("#about2").popup();
 			}else if(flag2==1){
 				$.closePopup();
+
 				flag2=0;
 				document.getElementById("show_block").style.display="block";
                 document.body.scrollTop=0+"px";
@@ -754,16 +757,18 @@
 				oTop=oTop -5;
 				oTop=oTop+50
 				obj.style.top= oTop+"px";
-				$.closePopup();
-		　 		$("#about3").popup();
+				//$.closePopup();
+		　
+
 				//obj.offsetTop=top
                 document.body.scrollTop=0+"px";
 				flag3=1;
 				flag =0;
 				flag2 =0;
-				
+                $("#about3").popup();
 			}else if(flag3==1){
 				$.closePopup();
+
 				flag3=0;
 				document.getElementById("show_block").style.display="block";
                 document.body.scrollTop=0+"px";
@@ -1688,7 +1693,8 @@
         };
 
     </script>
-    <script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+    <!--<script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script> -->
+	<script type="text/javascript" src="./js/jquery-weui.js"></script>
     <script src="https://cdn.bootcss.com/jquery-weui/1.2.0/js/jquery-weui.min.js"></script>
 	<!--<script src="//cdn.bootcss.com/jquery-weui/0.8.3/js/swiper.min.js"></script>
 	<script src="//cdn.bootcss.com/jquery-weui/0.8.3/js/city-picker.min.js"></script>-->
