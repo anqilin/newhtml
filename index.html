@@ -473,7 +473,7 @@
 					  	<button style="width:100%" class="ui-btn">娱乐</button>
 					  </div>
 					  <div style="padding:5px" class="weui-flex__item" >
-					  	<button style="width:100%; font-size:12px" class="ui-btn">交通</button>
+					  	<button style="width:100%" class="ui-btn">交通</button>
 					  </div>
 					  <div style="padding:5px" class="weui-flex__item">
 					  </div>
@@ -664,6 +664,7 @@
 		function demo1(){
 			if(flag==0){
 				document.getElementById("show_block").style.display="none";
+                document.getElementById("searchBar").style.display="none";
 				var obj= document.getElementById('about');
 				var top =document.getElementById('web_navbar');
 				var show_block=document.getElementById('show_block');
@@ -687,6 +688,7 @@
 				flag2=0;
 				flag3 =0;
                 $("#about").popup();
+                document.addEventListener('touchmove', preventDefault, {passive: false});
 			}else if(flag==1){
 				$.closePopup();
 
@@ -694,15 +696,18 @@
 
 				flag=0;
 				document.getElementById("show_block").style.display="block";
+                document.getElementById("searchBar").style.display="block";
                 //document.body.scrollTop=0+"px";
                // $('.scroll_top').click(function(){$('html,body').animate({scrollTop: '0px'}, 100);});
                 $(window).scrollTop(0);
+                document.removeEventListener('touchmove', preventDefault, {passive: false});
 			}
 			
 		}
 		function demo2(){
 			if(flag2==0){
 				document.getElementById("show_block").style.display="none";
+                document.getElementById("searchBar").style.display="none";
 				var obj= document.getElementById('about2');
 				var top =document.getElementById('web_navbar');
 				var show_block=document.getElementById('show_block');
@@ -727,12 +732,15 @@
 				flag=0;
 				flag3 = 0;
                 $("#about2").popup();
+                document.addEventListener('touchmove', preventDefault, {passive: false});
 			}else if(flag2==1){
 				$.closePopup();
 
 				flag2=0;
 				document.getElementById("show_block").style.display="block";
+                document.getElementById("searchBar").style.display="block";
                 document.body.scrollTop=0+"px";
+                document.removeEventListener('touchmove', preventDefault, {passive: false});
 			}			
 				
 		   
@@ -741,7 +749,8 @@
 		
 		function demo3(){
 			if(flag3==0){
-				document.getElementById("show_block").style.display="none"; 
+				document.getElementById("show_block").style.display="none";
+                document.getElementById("searchBar").style.display="none";
 				var obj= document.getElementById('about3');
 				var top =document.getElementById('web_navbar');
 				var show_block=document.getElementById('show_block');
@@ -766,12 +775,15 @@
 				flag =0;
 				flag2 =0;
                 $("#about3").popup();
+                document.addEventListener('touchmove', preventDefault, {passive: false});
 			}else if(flag3==1){
 				$.closePopup();
 
 				flag3=0;
 				document.getElementById("show_block").style.display="block";
+                document.getElementById("searchBar").style.display="block";
                 document.body.scrollTop=0+"px";
+                document.removeEventListener('touchmove', preventDefault, {passive: false});
 			}			
 	　
 		}
@@ -1713,6 +1725,9 @@
                 return ret;
             }
         };
+        function preventDefault(e) {
+            e.preventDefault();
+        }
 
     </script>
     <!--<script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script> -->
